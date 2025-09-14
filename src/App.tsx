@@ -1,5 +1,5 @@
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 // import reactLogo from './assets/react.svg';
 // import viteLogo from '/vite.svg';
 import topPicture from './assets/images/temp-top-picture.jpg';
@@ -11,55 +11,71 @@ function getDonationWithFeesAmount(dollars: number): number {
 
 function Home() {
   const [donationDollars, setDonationDollars] = useState(50);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   return (
     <>
+      <LinkBar />
       <img src={topPicture} alt="Scouts in Troop" />
       <section className="about-and-donation">
         <h1>Invest in future changemakers. Give today to inspire tomorrow.</h1>
-        {/* grid with 2 columns  */}
         <div className="support-benefits-donate">
           <div>
-            <h2>Your Support Matters</h2>
-            {/* TODO use real text */}
+            <h2 className="support-matters-header">Your Support Matters</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              When you donate to troop 8634, you are helping girls and young
+              women in scouting build courage, confidence, and character. With
+              your support, girls in our community gain access to life-changing
+              experiences in leadership, outdoor adventure, and community
+              service.
             </p>
-            Benefits of scouting
-            <ul>
-              {/* TODO use real text */}
-              {/* check marks for bullet points */}
-              <li>Learn about leadership</li>
-              <li>Learn about service</li>
-              <li>Learn about teamwork</li>
-              <li>Learn about teamwork</li>
-              <li>Learn about teamwork</li>
-              <li>Learn about teamwork</li>
-              <li>Learn about teamwork</li>
-              <li>Learn about teamwork</li>
-            </ul>
+            <div className="benefits">
+              Benefits of scouting
+              <ul>
+                <li>Leadership Development</li>
+                <li>Teamwork and Collaboration</li>
+                <li>Outdoor Skills and Appreciation</li>
+                <li>Community Service</li>
+                <li>Personal Growth</li>
+                <li>Ethical Values</li>
+                <li>Physical Fitness</li>
+                <li>Lifelong Frendships</li>
+              </ul>
+            </div>
           </div>
           <div>
-            <h2>Empower Future Leaders&#8202;&mdash;&#8202;Donate Today</h2>
-            <button onClick={() => setDonationDollars(50)}>$50</button>
-            <button onClick={() => setDonationDollars(100)}>$100</button>
-            <button onClick={() => setDonationDollars(250)}>$250</button>
-            <input
-              type="text"
-              onChange={(e) => setDonationDollars(Number(e.target.value))}
-              placeholder="Other Amount"
-              value={donationDollars}
-            />
-            <div>
-              Cover processing fees for my {donationDollars} by increasing it to{' '}
-              {getDonationWithFeesAmount(donationDollars)}
+            <div className="donate-box">
+              <h2>Empower Future Leaders&#8202;&mdash;&#8202;Donate Today</h2>
+              <div className="donation-amount-buttons">
+                {[50, 100, 250].map((amount) => (
+                  <button
+                    key={amount}
+                    className={
+                      donationDollars === amount ? 'current' : 'not-current'
+                    }
+                    onClick={() => setDonationDollars(amount)}
+                  >
+                    ${amount}
+                  </button>
+                ))}
+              </div>
+              <div>
+                {/* TODO: Next task add USD shaded text on the right, make font size larger */}
+                <input
+                  type="text"
+                  onChange={(e) => setDonationDollars(Number(e.target.value))}
+                  placeholder="Other Amount"
+                  value={donationDollars}
+                />
+              </div>
+              <div>
+                Cover processing fees for my {donationDollars} by increasing it
+                to {getDonationWithFeesAmount(donationDollars)}
+              </div>
+              <button>Enter payment info</button>
             </div>
-            <button>Enter payment info</button>
           </div>
           <p>
-            {/* TODO: Make "contact us" a button that opens the modal near the bottom */}
             If you have questions about giving or would like to learn more about
             our programs, please contact us.
           </p>
@@ -72,17 +88,29 @@ function Home() {
           Want to Know More?
           <br />
           Reach out to us!
-          <button>Contact Us</button>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
         </h2>
+        <button onClick={() => dialogRef.current?.showModal()}>
+          Contact Us
+        </button>
+        <p className="history">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <dialog ref={dialogRef}>
+          <h3>Contact Us</h3>
+          {/* <form> */}
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="text" placeholder="Phone" />
+          <input type="text" placeholder="Message" />
+          <button onClick={() => dialogRef.current?.close()}>Submit</button>
+          {/* </form> */}
+        </dialog>
       </section>
     </>
   );
@@ -94,26 +122,24 @@ function Calendar() {
 
 function LinkBar() {
   return (
-    <div>
-      <Link to="/">Home</Link> <Link to="/calendar">Calendar</Link>
-    </div>
+    <nav>
+      <Link to="/calendar">Calendar</Link>
+      <Link to="/donate">Donate</Link>
+      <Link to="/learn-more">Learn More</Link>
+    </nav>
   );
 }
 
 function App() {
   return (
-    <>
-      {/* <img src={viteLogo} className="logo" alt="Vite logo" />
-      <img src={reactLogo} className="logo react" alt="React logo" /> */}
-
+    <div className="content">
       <BrowserRouter>
-        <LinkBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/calendar" element={<Calendar />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
