@@ -4,14 +4,13 @@
   --donation-button-text: var(--dark-green);
   --header-text: var(--dark-green);
   --quotes-page-background: var(--dark-green);
+  --increase-donation-button-fill: var(--dark-green);
 
   --light-green: rgb(0, 176, 80);
   --support-matters-header-text: var(--light-green);
   --benefits-text: var(--light-green);
   --default-button-background: var(--light-green);
-
-  --other-green: rgb(0, 176, 80);
-  --contact-button-background: var(--other-green);
+  --contact-button-background: var(--light-green);
 
   --pea-green: rgb(51, 102, 0);
   --nav-bar-text: var(--pea-green);
@@ -37,8 +36,14 @@
   --white-transparent: rgba(var(--white-values), 0.8);
   --nav-bar-background: var(--white-transparent);
 
-  --gray: rgb(158, 158, 158);
-  --general-border-color: var(--gray);
+  --gray-158: rgb(158, 158, 158);
+  --general-border-color: var(--gray-158);
+
+  --gray127: rgb(127, 127, 127);
+  --questions-blurb-test: var(--gray127);
+
+  --gray-89: rgb(89, 89, 89);
+  --donation-increase-text: var(--gray-89);
 
   --section-top-bottom-padding: 0;
   --gutter-width: 2em;
@@ -119,7 +124,6 @@ h1 {
 }
 
 .support-benefits-donate {
-  border: 1px solid black;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2em;
@@ -165,6 +169,7 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 0.8rem;
 
     button {
       display: block;
@@ -178,12 +183,87 @@ h1 {
       }
     }
   }
+
+  .text-wrapper {
+    position: relative;
+
+    .dollar-symbol {
+      position: absolute;
+      top: 0.1em;
+      left: 0.2em;
+    }
+
+    .currency-type {
+      position: absolute;
+      top: 0.1em;
+      right: 0.5em;
+      opacity: 0.5;
+    }
+
+    input {
+      display: block;
+      font-size: 1.2rem;
+      padding-left: 0.7rem;
+      width: calc(100% - 1.1rem);
+      margin-bottom: 0.8rem;
+    }
+  }
+
+  .increase-blurb-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--general-text);
+    margin-bottom: 0.8rem;
+    gap: 0.5rem;
+
+    .increase-icon {
+      display: block;
+      top: 0.2em;
+      left: 0.5em;
+      height: 2em;
+      width: 2em;
+      color: var(--increase-donation-button-fill);
+      fill: var(--increase-donation-button-fill);
+    }
+
+    p {
+      color: var(--donation-increase-text);
+      margin: 0;
+    }
+  }
+
+  .submit-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.6em 2em;
+    background-color: var(--increase-donation-button-fill);
+    text-transform: uppercase;
+
+    span {
+      line-height: 1.2;
+    }
+  }
+}
+
+.questions-text {
+  font-size: 0.9rem;
+  color: var(--questions-blurb-test);
+  text-align: center;
+  width: 70%;
 }
 
 button {
   background-color: var(--default-button-background);
   color: var(--default-button-text);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 0.6em 2em;
   font-size: 0.8rem;
   font-weight: 500;
