@@ -4,6 +4,7 @@ import {useRef, useState} from 'react';
 // import viteLogo from '/vite.svg';
 import topPicture from './assets/images/temp-top-picture.jpg';
 import {FaCheckCircle, FaLock} from 'react-icons/fa';
+import {Quote} from './components/Quote';
 
 function getDonationWithFeesAmount(dollars: number): number {
   // TODO: confirm fee percentage with payment processor
@@ -75,7 +76,8 @@ function Home() {
           <div>
             <div className="donate-box">
               <h2>Empower Future Leaders&#8202;&mdash;&#8202;Donate Today</h2>
-              <div className="donation-amount-buttons">
+              {/* TODO: Cleanup when I'm sure I don't wnat this code */}
+              {/* <div className="donation-amount-buttons">
                 {[50, 100, 250].map((amount) => (
                   <button
                     key={amount}
@@ -122,18 +124,32 @@ function Home() {
               <button className="submit-button">
                 <FaLock />
                 <span>Enter payment info</span>
-              </button>
+              </button> */}
+              <a href="https://www.paypal.com/donate/?hosted_button_id=ZQCX9N42G6AMU">
+                Donate
+              </a>
             </div>
           </div>
         </div>
         <p className="questions-text">
-          {/* TODO: Contact us should be link */}
           If you have questions about giving or would like to learn more about
-          our programs, please contact us.
+          our programs, please{' '}
+          <button
+            className="plain-text-button"
+            onClick={() => dialogRef.current?.showModal()}
+          >
+            contact us
+          </button>
+          .
         </p>
       </section>
       {/* TODO: Quotes section */}
-      <section />
+      <section className="quotes" />
+      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+
       <section>
         <h2>
           Want to Know More?
@@ -152,13 +168,13 @@ function Home() {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
-        <dialog ref={dialogRef}>
+        <dialog className="contact-us-form" ref={dialogRef}>
           <h3>Contact Us</h3>
           {/* <form> */}
           <input type="text" placeholder="Name" />
           <input type="email" placeholder="Email" />
           <input type="text" placeholder="Phone" />
-          <input type="text" placeholder="Message" />
+          <textarea placeholder="Message" rows={3} />
           <button onClick={() => dialogRef.current?.close()}>Submit</button>
           {/* </form> */}
         </dialog>
