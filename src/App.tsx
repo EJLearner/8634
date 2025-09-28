@@ -87,6 +87,7 @@ function Home() {
         <dialog className="contact-us-form" ref={dialogRef}>
           <h3>Contact Us</h3>
           <form name="contact" data-netlify="true" method="POST">
+            <input type="hidden" name="form-name" value="contact" />
             <input
               aria-label="Name"
               name="name"

@@ -7,6 +7,13 @@
     <title>Vite + React + TS</title>
   </head>
   <body>
+    <form name="contact" data-netlify="true" hidden>
+      <input name="name" type="text" />
+      <input name="email" type="email" />
+      <input name="phone" type="text" />
+      <textarea name="message" />
+      <button type="submit">Submit</button>
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
