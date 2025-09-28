@@ -1,46 +1,11 @@
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-import {useRef, useState} from 'react';
+import {useRef} from 'react';
 // import reactLogo from './assets/react.svg';
 // import viteLogo from '/vite.svg';
 import topPicture from './assets/images/temp-top-picture.jpg';
-import {FaCheckCircle, FaLock} from 'react-icons/fa';
 import {Quote} from './components/Quote';
 
-function getDonationWithFeesAmount(dollars: number): number {
-  // TODO: confirm fee percentage with payment processor
-  return Math.round(dollars * 1.1);
-}
-
-function formatDonation(inputAmount: string) {
-  const numbersAndPeriodsOnly = inputAmount.replace(/[^0-9.]/g, '');
-
-  const [beforePeriod, afterPeriod] = numbersAndPeriodsOnly.split('.');
-
-  const hasDot = numbersAndPeriodsOnly.includes('.');
-  const everyNumberAfterDotIsZero = afterPeriod
-    ?.split('')
-    .every((char) => char === '0');
-
-  let donationNumber;
-
-  if (!hasDot) {
-    donationNumber = beforePeriod;
-  } else if (everyNumberAfterDotIsZero) {
-    donationNumber = beforePeriod;
-  } else {
-    donationNumber = Number(numbersAndPeriodsOnly).toFixed(2);
-  }
-
-  return donationNumber;
-}
-
-function unformatDonation(inputAmount: string) {
-  return Number(inputAmount.replace(/\$/, ''));
-}
-
 function Home() {
-  const [donationAmount, setDonationAmount] = useState(50);
-  const [inputTextAmount, setInputTextAmount] = useState('50');
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   return (
@@ -76,55 +41,6 @@ function Home() {
           <div>
             <div className="donate-box">
               <h2>Empower Future Leaders&#8202;&mdash;&#8202;Donate Today</h2>
-              {/* TODO: Cleanup when I'm sure I don't wnat this code */}
-              {/* <div className="donation-amount-buttons">
-                {[50, 100, 250].map((amount) => (
-                  <button
-                    key={amount}
-                    className={
-                      amount === donationAmount ? 'current' : 'not-current'
-                    }
-                    onClick={() => {
-                      setDonationAmount(amount);
-                      setInputTextAmount(String(amount));
-                    }}
-                  >
-                    ${amount}
-                  </button>
-                ))}
-              </div>
-              <div>
-                <div className="text-wrapper">
-                  <span className="dollar-symbol">$</span>
-                  <span className="currency-type">USD</span>
-                  <input
-                    className="dollar-text-input"
-                    type="text"
-                    onChange={(e) => setInputTextAmount(e.target.value)}
-                    onBlur={(e) => {
-                      const formattedAmount = formatDonation(e.target.value);
-                      const unformattedAmount =
-                        unformatDonation(formattedAmount);
-                      setInputTextAmount(formattedAmount);
-                      setDonationAmount(unformattedAmount);
-                    }}
-                    placeholder="Other Amount"
-                    value={inputTextAmount}
-                  />
-                </div>
-              </div>
-              <div className="increase-blurb-wrapper">
-                <FaCheckCircle className="increase-icon" />
-                <p>
-                  Increase my donation to{' '}
-                  <strong>${getDonationWithFeesAmount(donationAmount)}</strong>{' '}
-                  so that processing fees are covered.
-                </p>
-              </div>
-              <button className="submit-button">
-                <FaLock />
-                <span>Enter payment info</span>
-              </button> */}
               <a href="https://www.paypal.com/donate/?hosted_button_id=ZQCX9N42G6AMU">
                 Donate
               </a>
