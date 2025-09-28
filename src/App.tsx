@@ -87,10 +87,30 @@ function Home() {
         <dialog className="contact-us-form" ref={dialogRef}>
           <h3>Contact Us</h3>
           <form name="contact" data-netlify="true" method="POST">
-            <input aria-label="Name" type="text" placeholder="Name" />
-            <input aria-label="Email" type="email" placeholder="Email" />
-            <input aria-label="Phone" type="text" placeholder="Phone" />
-            <textarea aria-labeel="Message" placeholder="Message" rows={3} />
+            <input
+              aria-label="Name"
+              name="name"
+              type="text"
+              placeholder="Name"
+            />
+            <input
+              aria-label="Email"
+              name="email"
+              type="email"
+              placeholder="Email"
+            />
+            <input
+              aria-label="Phone"
+              name="phone"
+              type="text"
+              placeholder="Phone"
+            />
+            <textarea
+              aria-label="Message"
+              name="message"
+              placeholder="Message"
+              rows={3}
+            />
             <button type="submit" onClick={() => dialogRef.current?.close()}>
               Submit
             </button>
