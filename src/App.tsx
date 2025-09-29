@@ -1,5 +1,5 @@
 import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 // import reactLogo from './assets/react.svg';
 // import viteLogo from '/vite.svg';
 import topPicture from './assets/images/temp-top-picture.jpg';
@@ -7,7 +7,48 @@ import {Quote} from './components/Quote';
 
 function Home() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const [formInfo, setFormInfo] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
 
+  console.log(formInfo.email);
+
+  const validateField = (
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const {name, value} = event.target;
+    if (name === 'name' && value.trim() === '') {
+      console.log('Name is required.');
+    } else if (name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
+      console.log('Please enter a valid email address.');
+    } else if (name === 'message' && value.trim() === '') {
+      console.log('Message is required.');
+    }
+  };
+
+  const handleFormChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
+  ) => setFormInfo({...formInfo, [event.target.name]: event.target.value});
+
+  const handleBlur = (
+    event:
+      | React.FocusEvent<HTMLInputElement>
+      | React.FocusEvent<HTMLTextAreaElement>,
+  ) => {
+    validateField(event);
+
+    const key = event.target.name as keyof typeof formInfo;
+    const newValue = formInfo[key].trim();
+
+    console.log({key, newValue});
+
+    setFormInfo({...formInfo, [key]: newValue});
+  };
   return (
     <>
       <LinkBar />
@@ -60,12 +101,12 @@ function Home() {
         </p>
       </section>
       {/* TODO: Quotes section */}
-      <section className="quotes" />
-      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
-      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
-      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
-      <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
-
+      <section className="quotes">
+        <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+        <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+        <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+        <Quote text="This is fun!" name="Jane Doe" rank="Tenderfoot" age={13} />
+      </section>
       <section>
         <h2>
           Want to Know More?
@@ -88,29 +129,47 @@ function Home() {
           <h3>Contact Us</h3>
           <form name="contact" data-netlify="true" method="POST">
             <input type="hidden" name="form-name" value="contact" />
-            <input
-              aria-label="Name"
-              name="name"
-              type="text"
-              placeholder="Name"
-            />
+            <div>
+              <input
+                aria-label="Name"
+                name="name"
+                type="text"
+                placeholder="Name"
+                required
+                onBlur={handleBlur}
+                value={formInfo.name}
+                onChange={handleFormChange}
+              />
+            </div>
             <input
               aria-label="Email"
+              onChange={handleFormChange}
               name="email"
-              type="email"
+              onBlur={handleBlur}
+              required
+              // not using type email so that my code can control email validation
+              type="text"
               placeholder="Email"
+              value={formInfo.email}
             />
             <input
               aria-label="Phone"
+              onChange={handleFormChange}
               name="phone"
-              type="text"
+              onBlur={handleBlur}
+              type="tel"
               placeholder="Phone"
+              value={formInfo.phone}
             />
             <textarea
               aria-label="Message"
               name="message"
               placeholder="Message"
               rows={3}
+              onBlur={handleBlur}
+              required
+              value={formInfo.message}
+              onChange={handleFormChange}
             />
             <button type="submit" onClick={() => dialogRef.current?.close()}>
               Submit
