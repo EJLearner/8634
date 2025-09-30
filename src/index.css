@@ -117,17 +117,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* TODO: This looks ugly, use an icon instead */
-div:has(input:required):before {
-  content: '*';
-  color: red;
-  font-size: 2rem;
-  font-weight: bold;
-  position: absolute;
-  top: 1.7px;
-  margin-left: -0.6em;
-}
-
 .plain-text-button {
   background-color: transparent;
   color: inherit;
@@ -345,8 +334,10 @@ h1 {
   padding: 1rem 2rem;
   width: 40%;
 
-  div {
-    position: relative;
+  .required-asterisk {
+    color: red;
+    font-size: 0.6em;
+    vertical-align: super;
   }
 
   input,

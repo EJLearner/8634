@@ -4,51 +4,118 @@ import {useRef, useState} from 'react';
 // import viteLogo from '/vite.svg';
 import topPicture from './assets/images/temp-top-picture.jpg';
 import {Quote} from './components/Quote';
+import {FaAsterisk} from 'react-icons/fa';
 
 function Home() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
-  const [formInfo, setFormInfo] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
 
-  console.log(formInfo.email);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
 
-  const validateField = (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const {name, value} = event.target;
-    if (name === 'name' && value.trim() === '') {
-      console.log('Name is required.');
-    } else if (name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
-      console.log('Please enter a valid email address.');
-    } else if (name === 'message' && value.trim() === '') {
-      console.log('Message is required.');
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [messageError, setMessageError] = useState('');
+
+  console.log({nameError, emailError, messageError, phoneError});
+
+  console.log(email);
+
+  const validateName = (name: string) => {
+    let error = '';
+
+    if (!name.trim()) {
+      error = 'Name is required.';
     }
+
+    setNameError(error);
+    return !error;
   };
 
-  const handleFormChange = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>,
-  ) => setFormInfo({...formInfo, [event.target.name]: event.target.value});
+  const validatedEmail = (email: string) => {
+    let error = '';
 
-  const handleBlur = (
-    event:
-      | React.FocusEvent<HTMLInputElement>
-      | React.FocusEvent<HTMLTextAreaElement>,
-  ) => {
-    validateField(event);
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      error = 'Please enter a valid email address.';
+    }
 
-    const key = event.target.name as keyof typeof formInfo;
-    const newValue = formInfo[key].trim();
-
-    console.log({key, newValue});
-
-    setFormInfo({...formInfo, [key]: newValue});
+    setEmailError(error);
+    return !error;
   };
+
+  const validatePhone = (phone: string) => {
+    let error = '';
+
+    if (phone.trim() !== '' && !/^\+?[0-9\s\-()]+$/.test(phone)) {
+      error = 'Please enter a valid phone number.';
+    }
+
+    setPhoneError(error);
+    return !error;
+  };
+
+  const handleNameBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const {value} = event.target;
+
+    let error = '';
+
+    if (!value.trim()) {
+      error = 'Name is required.';
+    }
+
+    setNameError(error);
+
+    validateName(value);
+    setName(value.trim());
+  };
+
+  const handleEmailBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const {value} = event.target;
+
+    let error = '';
+
+    if (!/\S+@\S+\.\S+/.test(value)) {
+      error = 'Please enter a valid email address.';
+    }
+
+    setEmailError(error);
+
+    validatedEmail(value);
+    setEmail(value.trim());
+  };
+
+  const handleMessageBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+    const {value} = event.target;
+
+    let error = '';
+
+    if (!value.trim()) {
+      error = 'Message is required.';
+    }
+
+    setMessageError(error);
+
+    setMessage(value.trim());
+  };
+
+  const handlePhoneBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const {value} = event.target;
+
+    let error = '';
+
+    // TODO: improve phone validation - should be at least 10 digits
+    if (phone.trim() !== '' && !/^\+?[0-9\s\-()]$/.test(phone)) {
+      error = 'Please enter a valid phone number.';
+    }
+
+    setPhoneError(error);
+
+    validatePhone(value);
+    setPhone(value.trim());
+  };
+
   return (
     <>
       <LinkBar />
@@ -129,48 +196,80 @@ function Home() {
           <h3>Contact Us</h3>
           <form name="contact" data-netlify="true" method="POST">
             <input type="hidden" name="form-name" value="contact" />
-            <div>
+            <label htmlFor="name">
+              Name <FaAsterisk className="required-asterisk" />
+              {nameError && (
+                <div className="error-message" id="name-error" role="alert">
+                  {nameError}
+                </div>
+              )}
               <input
                 aria-label="Name"
+                aria-invalid={Boolean(nameError)}
+                aria-describedby={nameError ? 'name-error' : undefined}
+                id="name"
                 name="name"
                 type="text"
-                placeholder="Name"
                 required
-                onBlur={handleBlur}
-                value={formInfo.name}
-                onChange={handleFormChange}
+                onBlur={handleNameBlur}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
-            </div>
-            <input
-              aria-label="Email"
-              onChange={handleFormChange}
-              name="email"
-              onBlur={handleBlur}
-              required
-              // not using type email so that my code can control email validation
-              type="text"
-              placeholder="Email"
-              value={formInfo.email}
-            />
-            <input
-              aria-label="Phone"
-              onChange={handleFormChange}
-              name="phone"
-              onBlur={handleBlur}
-              type="tel"
-              placeholder="Phone"
-              value={formInfo.phone}
-            />
-            <textarea
-              aria-label="Message"
-              name="message"
-              placeholder="Message"
-              rows={3}
-              onBlur={handleBlur}
-              required
-              value={formInfo.message}
-              onChange={handleFormChange}
-            />
+            </label>
+            <label htmlFor="email">
+              Email <FaAsterisk className="required-asterisk" />
+              {emailError && (
+                <div className="error-message" id="email-error" role="alert">
+                  {emailError}
+                </div>
+              )}
+              <input
+                id="email"
+                aria-label="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                onBlur={handleEmailBlur}
+                required
+                // not using type email so that my code can control email validation
+                type="text"
+                value={email}
+              />
+            </label>
+            <label htmlFor="phone">
+              Phone
+              {phoneError && (
+                <div className="error-message" id="phone-error" role="alert">
+                  {phoneError}
+                </div>
+              )}
+              <input
+                id="phone"
+                aria-label="Phone"
+                onChange={(e) => setPhone(e.target.value)}
+                name="phone"
+                onBlur={handlePhoneBlur}
+                type="tel"
+                value={phone}
+              />
+            </label>
+            <label htmlFor="message">
+              Message <FaAsterisk className="required-asterisk" />
+              {messageError && (
+                <div className="error-message" id="message-error" role="alert">
+                  {messageError}
+                </div>
+              )}
+              <textarea
+                aria-label="Message"
+                id="message"
+                name="message"
+                rows={3}
+                onBlur={handleMessageBlur}
+                required
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </label>
             <button type="submit" onClick={() => dialogRef.current?.close()}>
               Submit
             </button>
