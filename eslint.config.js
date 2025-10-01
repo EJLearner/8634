@@ -21,6 +21,7 @@ export default tseslint.config([
     },
     rules: {
       'no-warning-comments': 'warn',
+      'object-shorthand': 'error',
     },
   },
 ]);

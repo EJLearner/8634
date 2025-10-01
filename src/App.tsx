@@ -6,6 +6,98 @@ import topPicture from './assets/images/temp-top-picture.jpg';
 import {Quote} from './components/Quote';
 import {FaAsterisk} from 'react-icons/fa';
 
+function Textbox({
+  value,
+  onChange,
+  errorMessage,
+  onBlur = () => {},
+  id,
+  label,
+  type = 'text',
+  required,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  errorMessage?: string;
+  onBlur?: (value: string) => void;
+  id: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <label htmlFor={id}>
+      {label}
+      {required && (
+        <>
+          {' '}
+          <FaAsterisk className="required-asterisk" />
+        </>
+      )}
+      {errorMessage && (
+        <div className="error-message" id={id + '-error'} role="alert">
+          {errorMessage}
+        </div>
+      )}
+      <input
+        id={id}
+        onChange={(e) => onChange(e.target.value)}
+        name={id}
+        onBlur={(e) => onBlur(e.target.value)}
+        required={required}
+        type={type}
+        value={value}
+      />
+    </label>
+  );
+}
+
+function Textarea({
+  value,
+  onChange,
+  errorMessage,
+  onBlur = () => {},
+  id,
+  label,
+  rows = 3,
+  required = false,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  errorMessage?: string;
+  onBlur?: (value: string) => void;
+  id: string;
+  label: string;
+  rows?: number;
+  required?: boolean;
+}) {
+  return (
+    <label htmlFor={id}>
+      {label}
+      {required && (
+        <>
+          {' '}
+          <FaAsterisk className="required-asterisk" />
+        </>
+      )}
+      {errorMessage && (
+        <div className="error-message" id={id + '-error'} role="alert">
+          {errorMessage}
+        </div>
+      )}
+      <textarea
+        id={id}
+        onChange={(e) => onChange(e.target.value)}
+        name={id}
+        rows={rows}
+        required={required}
+        onBlur={(e) => onBlur(e.target.value)}
+        value={value}
+      />
+    </label>
+  );
+}
+
 function Home() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
@@ -56,9 +148,7 @@ function Home() {
     return !error;
   };
 
-  const handleNameBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const {value} = event.target;
-
+  const handleNameBlur = (value: string) => {
     let error = '';
 
     if (!value.trim()) {
@@ -71,9 +161,7 @@ function Home() {
     setName(value.trim());
   };
 
-  const handleEmailBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const {value} = event.target;
-
+  const handleEmailBlur = (value: string) => {
     let error = '';
 
     if (!/\S+@\S+\.\S+/.test(value)) {
@@ -86,9 +174,7 @@ function Home() {
     setEmail(value.trim());
   };
 
-  const handleMessageBlur = (event: React.FocusEvent<HTMLTextAreaElement>) => {
-    const {value} = event.target;
-
+  const handleMessageBlur = (value: string) => {
     let error = '';
 
     if (!value.trim()) {
@@ -96,13 +182,10 @@ function Home() {
     }
 
     setMessageError(error);
-
     setMessage(value.trim());
   };
 
-  const handlePhoneBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const {value} = event.target;
-
+  const handlePhoneBlur = (value: string) => {
     let error = '';
 
     // TODO: improve phone validation - should be at least 10 digits
@@ -196,80 +279,42 @@ function Home() {
           <h3>Contact Us</h3>
           <form name="contact" data-netlify="true" method="POST">
             <input type="hidden" name="form-name" value="contact" />
-            <label htmlFor="name">
-              Name <FaAsterisk className="required-asterisk" />
-              {nameError && (
-                <div className="error-message" id="name-error" role="alert">
-                  {nameError}
-                </div>
-              )}
-              <input
-                aria-label="Name"
-                aria-invalid={Boolean(nameError)}
-                aria-describedby={nameError ? 'name-error' : undefined}
-                id="name"
-                name="name"
-                type="text"
-                required
-                onBlur={handleNameBlur}
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-            <label htmlFor="email">
-              Email <FaAsterisk className="required-asterisk" />
-              {emailError && (
-                <div className="error-message" id="email-error" role="alert">
-                  {emailError}
-                </div>
-              )}
-              <input
-                id="email"
-                aria-label="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                name="email"
-                onBlur={handleEmailBlur}
-                required
-                // not using type email so that my code can control email validation
-                type="text"
-                value={email}
-              />
-            </label>
-            <label htmlFor="phone">
-              Phone
-              {phoneError && (
-                <div className="error-message" id="phone-error" role="alert">
-                  {phoneError}
-                </div>
-              )}
-              <input
-                id="phone"
-                aria-label="Phone"
-                onChange={(e) => setPhone(e.target.value)}
-                name="phone"
-                onBlur={handlePhoneBlur}
-                type="tel"
-                value={phone}
-              />
-            </label>
-            <label htmlFor="message">
-              Message <FaAsterisk className="required-asterisk" />
-              {messageError && (
-                <div className="error-message" id="message-error" role="alert">
-                  {messageError}
-                </div>
-              )}
-              <textarea
-                aria-label="Message"
-                id="message"
-                name="message"
-                rows={3}
-                onBlur={handleMessageBlur}
-                required
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              />
-            </label>
+            <Textbox
+              id="name"
+              label="Name"
+              value={name}
+              onChange={(value: string) => setName(value)}
+              errorMessage={nameError}
+              onBlur={(value: string) => handleNameBlur(value)}
+              required
+            />
+            <Textbox
+              id="email"
+              label="Email"
+              value={email}
+              onChange={(value: string) => setEmail(value)}
+              errorMessage={emailError}
+              onBlur={(value: string) => handleEmailBlur(value)}
+              required
+            />
+            <Textbox
+              id="phone"
+              label="Phone"
+              type="tel"
+              value={phone}
+              onChange={(value: string) => setPhone(value)}
+              errorMessage={phoneError}
+              onBlur={(value: string) => handlePhoneBlur(value)}
+            />
+            <Textarea
+              id="message"
+              label="Message"
+              value={message}
+              onChange={(value: string) => setMessage(value)}
+              errorMessage={messageError}
+              onBlur={(value: string) => handleMessageBlur(value)}
+              required
+            />
             <button type="submit" onClick={() => dialogRef.current?.close()}>
               Submit
             </button>
