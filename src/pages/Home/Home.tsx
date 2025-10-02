@@ -1,17 +1,11 @@
-import {useRef, useState} from 'react';
+import {useRef} from 'react';
 import topPicture from '../../assets/images/temp-top-picture.jpg';
-import {Quote} from './Quote';
-import {Textbox} from '../../components/Textbox';
-import {Textarea} from '../../components/Textarea';
 import {LinkBar} from '../../components/LinkBar';
+import {ContactUsSection} from './ContactUsSection';
+import {QuotesSection} from './QuotesSection';
 
 function Home() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState('');
 
   return (
     <>
@@ -64,71 +58,8 @@ function Home() {
           .
         </p>
       </section>
-      {/* TODO: Quotes section */}
-      <section className="quotes">
-        <Quote age={13} name="Jane Doe" rank="Tenderfoot" text="This is fun!" />
-        <Quote age={13} name="Jane Doe" rank="Tenderfoot" text="This is fun!" />
-        <Quote age={13} name="Jane Doe" rank="Tenderfoot" text="This is fun!" />
-        <Quote age={13} name="Jane Doe" rank="Tenderfoot" text="This is fun!" />
-      </section>
-      <section>
-        <h2>
-          Want to Know More?
-          <br />
-          Reach out to us!
-        </h2>
-        <button onClick={() => dialogRef.current?.showModal()}>
-          Contact Us
-        </button>
-        <p className="history">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-        <dialog className="contact-us-form" ref={dialogRef}>
-          <h3>Contact Us</h3>
-          <form data-netlify="true" method="POST" name="contact">
-            <input name="form-name" type="hidden" value="contact" />
-            <Textbox
-              id="name"
-              label="Name"
-              onChange={(value: string) => setName(value)}
-              pattern=".*\S.*"
-              required
-              value={name}
-            />
-            <Textbox
-              id="email"
-              label="Email"
-              onChange={(value: string) => setEmail(value)}
-              pattern="^\S+@\S+\.\S+$"
-              required
-              value={email}
-            />
-            <Textbox
-              id="phone"
-              label="Phone"
-              onChange={(value: string) => setPhone(value)}
-              pattern="^(?:\D*\d\D*){10,}$"
-              value={phone}
-            />
-            <Textarea
-              id="message"
-              label="Message"
-              onChange={(value: string) => setMessage(value)}
-              required
-              value={message}
-            />
-            <button onClick={() => dialogRef.current?.close()} type="submit">
-              Submit
-            </button>
-          </form>
-        </dialog>
-      </section>
+      <QuotesSection />
+      <ContactUsSection ref={dialogRef} />
     </>
   );
 }
