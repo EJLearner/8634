@@ -2,7 +2,7 @@ import {useRef} from 'react';
 import {FaAsterisk} from 'react-icons/fa';
 
 function updateValidity(
-  inputRef: React.RefObject<HTMLInputElement> | null,
+  inputRef: React.RefObject<HTMLTextAreaElement | null>,
   label: string,
 ) {
   if (inputRef?.current) {
@@ -22,16 +22,15 @@ function updateValidity(
   }
 }
 
-export function Textbox({
+export function Textarea({
   value,
   onChange,
   errorMessage,
-  onBlur: onBlurProp = () => {},
+  onBlur,
   id,
   label,
-  pattern,
-  type = 'text',
-  required,
+  rows = 3,
+  required = false,
 }: {
   value: string;
   onChange: (value: string) => void;
@@ -39,11 +38,11 @@ export function Textbox({
   onBlur?: (value: string) => void;
   id: string;
   label: string;
+  rows?: number;
   pattern?: string;
-  type?: string;
   required?: boolean;
 }) {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const textboxRef = useRef<HTMLTextAreaElement | null>(null);
 
   return (
     <label htmlFor={id}>
@@ -59,18 +58,17 @@ export function Textbox({
           {errorMessage}
         </div>
       )}
-      <input
+      <textarea
         id={id}
-        onChange={(e) => onChange(e.target.value)}
         name={id}
         onBlur={(e) => {
-          updateValidity(inputRef, label);
-          onBlurProp?.(e.target.value);
+          updateValidity(textboxRef, label);
+          onBlur?.(e.target.value);
         }}
-        pattern={pattern}
+        onChange={(e) => onChange(e.target.value)}
+        ref={textboxRef}
         required={required}
-        type={type}
-        ref={inputRef}
+        rows={rows}
         value={value}
       />
     </label>
