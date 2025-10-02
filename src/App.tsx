@@ -4,99 +4,8 @@ import {useRef, useState} from 'react';
 // import viteLogo from '/vite.svg';
 import topPicture from './assets/images/temp-top-picture.jpg';
 import {Quote} from './components/Quote';
-import {FaAsterisk} from 'react-icons/fa';
-
-function Textbox({
-  value,
-  onChange,
-  errorMessage,
-  onBlur = () => {},
-  id,
-  label,
-  type = 'text',
-  required,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  errorMessage?: string;
-  onBlur?: (value: string) => void;
-  id: string;
-  label: string;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <label htmlFor={id}>
-      {label}
-      {required && (
-        <>
-          {' '}
-          <FaAsterisk className="required-asterisk" />
-        </>
-      )}
-      {errorMessage && (
-        <div className="error-message" id={id + '-error'} role="alert">
-          {errorMessage}
-        </div>
-      )}
-      <input
-        id={id}
-        onChange={(e) => onChange(e.target.value)}
-        name={id}
-        onBlur={(e) => onBlur(e.target.value)}
-        required={required}
-        type={type}
-        value={value}
-      />
-    </label>
-  );
-}
-
-function Textarea({
-  value,
-  onChange,
-  errorMessage,
-  onBlur = () => {},
-  id,
-  label,
-  rows = 3,
-  required = false,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-  errorMessage?: string;
-  onBlur?: (value: string) => void;
-  id: string;
-  label: string;
-  rows?: number;
-  required?: boolean;
-}) {
-  return (
-    <label htmlFor={id}>
-      {label}
-      {required && (
-        <>
-          {' '}
-          <FaAsterisk className="required-asterisk" />
-        </>
-      )}
-      {errorMessage && (
-        <div className="error-message" id={id + '-error'} role="alert">
-          {errorMessage}
-        </div>
-      )}
-      <textarea
-        id={id}
-        onChange={(e) => onChange(e.target.value)}
-        name={id}
-        rows={rows}
-        required={required}
-        onBlur={(e) => onBlur(e.target.value)}
-        value={value}
-      />
-    </label>
-  );
-}
+import {Textbox} from './Textbox';
+import {Textarea} from './Textarea';
 
 function Home() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -286,6 +195,7 @@ function Home() {
               onChange={(value: string) => setName(value)}
               errorMessage={nameError}
               onBlur={(value: string) => handleNameBlur(value)}
+              pattern=".*\S.*"
               required
             />
             <Textbox
@@ -295,6 +205,7 @@ function Home() {
               onChange={(value: string) => setEmail(value)}
               errorMessage={emailError}
               onBlur={(value: string) => handleEmailBlur(value)}
+              pattern="^\S+@\S+\.\S+$"
               required
             />
             <Textbox
@@ -304,6 +215,7 @@ function Home() {
               value={phone}
               onChange={(value: string) => setPhone(value)}
               errorMessage={phoneError}
+              pattern="^\+?[0-9\s\-()]+$"
               onBlur={(value: string) => handlePhoneBlur(value)}
             />
             <Textarea
