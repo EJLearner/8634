@@ -26,8 +26,7 @@ export default tseslint.config([
       'object-shorthand': 'error',
       'prefer-template': 'error',
       'react/jsx-sort-props': 'error',
-      'sort-keys': 'error',
-      'react/no-useless-fragment': 'error',
+      'react/jsx-no-useless-fragment': 'error',
     },
   },
 ]);

@@ -1,48 +1,34 @@
-import picturePng from '../../assets/images/circle-png-circle-png-hd-1600-3284616235.png';
-
+import {
+  getScoutMasterQuoteInfo,
+  getScoutQuotesInfo,
+} from '../../stores/scoutQuotesInfo';
 import {Quote} from './Quote';
 
 function QuotesSection() {
-  return (
-    <>
-      <section className="quotes">
-        {/* TODO: Quotes section */}
+  const scoutQuotesInfo = getScoutQuotesInfo();
+  const {name, quote, yearsInLeadership} = getScoutMasterQuoteInfo();
 
-        <div>
-          <Quote
-            age={13}
-            picture={picturePng}
-            name="Jane Doe"
-            rank="Tenderfoot"
-            text="This is fun!"
-          />
-          <Quote
-            age={13}
-            name="Jane Doe"
-            picture={picturePng}
-            rank="Tenderfoot"
-            text="This is fun!"
-          />
+  return (
+    <section className="quotes">
+      {/* TODO: After publish - would be nice to improve grid so that I can render a map of quotes with less markup here */}
+
+      <div>
+        <Quote {...scoutQuotesInfo[0]} />
+        <Quote {...scoutQuotesInfo[1]} />
+      </div>
+      <div>
+        <div className="scout-master-quote-content">
+          <p>{quote}</p>
+          <p>
+            {name}, {yearsInLeadership} years
+          </p>
         </div>
-        <div>I am the scoutmaster</div>
-        <div>
-          <Quote
-            age={13}
-            picture={picturePng}
-            name="Jane Doe"
-            rank="Tenderfoot"
-            text="This is fun!"
-          />
-          <Quote
-            age={13}
-            picture={picturePng}
-            name="Jane Doe"
-            rank="Tenderfoot"
-            text="This is fun!"
-          />
-        </div>
-      </section>
-    </>
+      </div>
+      <div>
+        <Quote {...scoutQuotesInfo[2]} />
+        <Quote {...scoutQuotesInfo[3]} />
+      </div>
+    </section>
   );
 }
 

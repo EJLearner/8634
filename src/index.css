@@ -262,8 +262,8 @@ h1 {
 }
 
 section.quotes {
-  --circle-diamter: 50px;
-  --neg-margin: 35px;
+  --picture-diameter: 75px;
+  --neg-margin: 48px;
 
   background-color: var(--quotes-page-background);
   color: var(--quote-text);
@@ -272,29 +272,26 @@ section.quotes {
   grid-template-areas: 'scout-quotes-1 scoutmaster-quote scout-quotes-2';
   gap: 1rem;
   width: 100%;
-  padding: 1em;
+  padding: 1em 1em 0;
 
   .quote-wrapper {
-    margin: 2rem 0;
-    border: 1px solid blue;
     position: relative;
     width: 200px;
-    height: calc(150px - var(--neg-margin));
+    height: calc(140px - var(--neg-margin));
     margin-bottom: var(--neg-margin);
   }
 
   .scout-picture {
-    width: var(--circle-diamter);
-    height: var(--circle-diamter);
+    width: var(--picture-diameter);
+    height: var(--picture-diameter);
     position: absolute;
-    left: calc(50% - var(--circle-diamter) / 2);
-    top: calc(var(--circle-diamter) / -2);
+    left: calc(50% - var(--picture-diameter) / 2);
+    top: calc(var(--picture-diameter) / -2);
   }
 
   .foreground-quote,
   .background-quote {
     position: absolute;
-    /* height: calc(100% - var(--neg-margin)); */
   }
 
   .foreground-quote {
@@ -311,16 +308,18 @@ section.quotes {
   .left-quote-icon {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 5px;
     width: 20px;
     height: 20px;
     fill: var(--scout-quote-marks);
   }
 
   .right-quote-icon {
+    --quote-distance-from-bottom: 70px;
+
     position: absolute;
-    bottom: calc(60px - var(--neg-margin));
-    right: 10px;
+    bottom: calc(var(--quote-distance-from-bottom) - var(--neg-margin));
+    right: 4px;
     width: 20px;
     height: 20px;
     fill: var(--scout-quote-marks);
@@ -331,6 +330,20 @@ section.quotes {
     width: 100%;
     height: 100%;
     font-size: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 2em;
+    align-items: center;
+  }
+
+  .quote-text {
+    padding: 0 3em;
+  }
+
+  .name-rank-age {
+    text-transform: uppercase;
+    font-weight: 400;
   }
 }
 
@@ -371,6 +384,5 @@ section.quotes {
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-
-} */
+/* TODO: Improve mobile layout */
+/* TODO: After publish: Add dark mode styles */

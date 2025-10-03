@@ -44,20 +44,12 @@ function QuoteShape({
   return (
     <svg
       className={className}
-      width="200"
       height={200}
+      width="200"
       xmlns="http://www.w3.org/2000/svg"
       // viewBox="0 0 200 150"
     >
-      <rect
-        width="100%"
-        height={rectHeight}
-        x="0"
-        y="0"
-        rx="20"
-        ry="20"
-        // fill="purple"
-      />
+      <rect height={rectHeight} rx="20" ry="20" width="100%" x="0" y="0" />
       {myTriangleMaker(triangleProperties)}
     </svg>
   );
@@ -74,15 +66,15 @@ function Quote(props: {
 
   return (
     <div className="quote-wrapper">
-      <QuoteShape type="background" className="background-quote" />
-      <QuoteShape type="foreground" className="foreground-quote" />
+      <QuoteShape className="background-quote" type="background" />
+      <QuoteShape className="foreground-quote" type="foreground" />
       <FaQuoteLeft className="left-quote-icon" />
       <FaQuoteRight className="right-quote-icon" />
-      <img className="scout-picture" src={picture} alt={`${name}'s picture`} />
+      <img alt={`${name}'s picture`} className="scout-picture" src={picture} />
       <div className="quote-content">
-        <p>{text}</p>
+        <p className="quote-text">{text}</p>
         <p className="name-rank-age">
-          {name}, {rank} {age}
+          {name}, {rank} Scout&ndash;Age {age}
         </p>
       </div>
     </div>
