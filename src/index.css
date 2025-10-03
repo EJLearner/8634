@@ -3,7 +3,6 @@
   --active-donation-button-background: var(--dark-green);
   --donation-button-text: var(--dark-green);
   --header-text: var(--dark-green);
-  --quotes-page-background: var(--dark-green);
   --increase-donation-button-fill: var(--dark-green);
 
   --light-green: rgb(0, 176, 80);
@@ -14,7 +13,10 @@
 
   --pea-green: rgb(51, 102, 0);
   --nav-bar-text: var(--pea-green);
-  --quote-background-color: var(--pea-green);
+  --front-quote-shape-fill-color: var(--pea-green);
+
+  --another-green: rgb(0, 102, 0);
+  --quotes-page-background: var(--another-green);
 
   --black: rgb(5, 5, 5);
   --general-text: var(--black);
@@ -27,11 +29,12 @@
 
   --white-values: 240, 240, 240;
   --white: rgb(var(--white-values));
-  --quote-text-name: var(--white);
+  --quote-text: var(--white);
   --donate-box-background-color: var(--white);
   --donation-button-background: var(--white);
   --active-donation-button-text: var(--white);
   --default-button-text: var(--white);
+  --behind-quote-shape-outline-color: var(--white);
 
   --white-transparent: rgba(var(--white-values), 0.8);
   --nav-bar-background: var(--white-transparent);
@@ -117,6 +120,13 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.top-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
 .plain-text-button {
   background-color: transparent;
   color: inherit;
@@ -166,8 +176,9 @@ h1 {
   color: var(--header-text);
   max-width: 60%;
   align-self: center;
-  text-align: left; /* left-align each line */
-  text-wrap: balance; /* balances line breaks */
+  text-align: left;
+  text-wrap: balance;
+  font-size: 1.7rem;
 }
 
 .support-benefits-donate {
@@ -233,7 +244,6 @@ h1 {
   }
   a {
     border: 2px solid transparent;
-    /* width: 100%; */
     text-align: center;
     font-size: 0.9rem;
     padding: 0.6em 2em;
@@ -248,6 +258,79 @@ h1 {
     &:hover {
       border-color: #646cff;
     }
+  }
+}
+
+section.quotes {
+  --circle-diamter: 50px;
+  --neg-margin: 35px;
+
+  background-color: var(--quotes-page-background);
+  color: var(--quote-text);
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: 'scout-quotes-1 scoutmaster-quote scout-quotes-2';
+  gap: 1rem;
+  width: 100%;
+  padding: 1em;
+
+  .quote-wrapper {
+    margin: 2rem 0;
+    border: 1px solid blue;
+    position: relative;
+    width: 200px;
+    height: calc(150px - var(--neg-margin));
+    margin-bottom: var(--neg-margin);
+  }
+
+  .scout-picture {
+    width: var(--circle-diamter);
+    height: var(--circle-diamter);
+    position: absolute;
+    left: calc(50% - var(--circle-diamter) / 2);
+    top: calc(var(--circle-diamter) / -2);
+  }
+
+  .foreground-quote,
+  .background-quote {
+    position: absolute;
+    /* height: calc(100% - var(--neg-margin)); */
+  }
+
+  .foreground-quote {
+    fill: var(--front-quote-shape-fill-color);
+  }
+
+  .background-quote {
+    top: -5px;
+    left: 5px;
+    fill: transparent;
+    stroke: var(--behind-quote-shape-outline-color);
+  }
+
+  .left-quote-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    fill: var(--scout-quote-marks);
+  }
+
+  .right-quote-icon {
+    position: absolute;
+    bottom: calc(60px - var(--neg-margin));
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    fill: var(--scout-quote-marks);
+  }
+
+  .quote-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-size: 0.6rem;
   }
 }
 

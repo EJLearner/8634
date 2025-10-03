@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import topPicture from '../../assets/images/temp-top-picture.jpg';
+import topPicture from '../../assets/images/scout-group.png';
 import {LinkBar} from '../../components/LinkBar';
 import {ContactUsSection} from './ContactUsSection';
 import {QuotesSection} from './QuotesSection';
@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
       <LinkBar />
-      <img alt="Scouts in Troop" src={topPicture} />
+      <img alt="Scouts in Troop" className="top-photo" src={topPicture} />
       <section className="about-and-donation">
         <h1>Invest in future changemakers. Give today to inspire tomorrow.</h1>
         <div className="support-benefits-donate">
