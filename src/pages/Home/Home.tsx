@@ -12,7 +12,9 @@ function Home() {
       <LinkBar />
       <img alt="Scouts in Troop" className="top-photo" src={topPicture} />
       <section className="about-and-donation">
-        <h1>Invest in future changemakers. Give today to inspire tomorrow.</h1>
+        <h1 id="donate-header">
+          Invest in future changemakers. Give today to inspire tomorrow.
+        </h1>
         <div className="support-benefits-donate">
           <div>
             <h2 className="support-matters-header">Your Support Matters</h2>

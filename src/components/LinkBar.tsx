@@ -4,8 +4,8 @@ function LinkBar() {
   return (
     <nav>
       <Link to="/calendar">Calendar</Link>
-      <Link to="/donate">Donate</Link>
-      <Link to="/learn-more">Learn More</Link>
+      <a href="/#donate-header">Donate</a>
+      <a href="/#contact-us-header">Learn More</a>
     </nav>
   );
 }

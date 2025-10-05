@@ -7,7 +7,7 @@ export function ContactUsSection({
 }) {
   return (
     <section>
-      <h2>
+      <h2 id="contact-us-header">
         Want to Know More?
         <br />
         Reach out to us!

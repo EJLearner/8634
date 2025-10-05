@@ -1,3 +1,4 @@
+import {FaQuoteLeft, FaQuoteRight} from 'react-icons/fa';
 import {
   getScoutMasterQuoteInfo,
   getScoutQuotesInfo,
@@ -17,10 +18,13 @@ function QuotesSection() {
         <Quote {...scoutQuotesInfo[1]} />
       </div>
       <div>
-        <div className="scout-master-quote-content">
-          <p>{quote}</p>
-          <p>
-            {name}, {yearsInLeadership} years
+        <div className="scoutmaster-quote-content">
+          <FaQuoteLeft className="left-quote-icon" />
+          <FaQuoteRight className="right-quote-icon" />
+          <p className="quote-text">{quote}</p>
+          <p className="name-years">
+            {name}
+            <br /> Scoutmaster, {yearsInLeadership} years
           </p>
         </div>
       </div>

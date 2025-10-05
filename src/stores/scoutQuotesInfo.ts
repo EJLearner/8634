@@ -3,10 +3,10 @@ import picturePng from '../assets/images/circle-png-circle-png-hd-1600-328461623
 const scoutQuotesInfo = [
   {
     age: 13,
-    name: 'Jane Doe',
+    name: 'Zuri Jones',
     picture: picturePng,
-    rank: 'Tenderfoot',
-    text: 'I am gaining valuable skills and friendships that will last a lifetime.',
+    rank: 'Star',
+    text: 'I became a scout in order to make strong bonds with others my age and to have easier opportunities to serve the community.',
   },
   {
     age: 15,

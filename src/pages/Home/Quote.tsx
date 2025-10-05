@@ -1,5 +1,8 @@
 import {FaQuoteLeft, FaQuoteRight} from 'react-icons/fa';
 
+// should match --scout-quote-width in index.css
+const SCOUT_QUOTE_WIDTH = 250;
+
 function myTriangleMaker({
   top,
   left,
@@ -44,10 +47,11 @@ function QuoteShape({
   return (
     <svg
       className={className}
-      height={200}
-      width="200"
+      height="200"
+      preserveAspectRatio="none"
+      viewBox={`0 0 ${SCOUT_QUOTE_WIDTH} 200`}
+      width={SCOUT_QUOTE_WIDTH}
       xmlns="http://www.w3.org/2000/svg"
-      // viewBox="0 0 200 150"
     >
       <rect height={rectHeight} rx="20" ry="20" width="100%" x="0" y="0" />
       {myTriangleMaker(triangleProperties)}

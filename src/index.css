@@ -29,7 +29,8 @@
 
   --white-values: 240, 240, 240;
   --white: rgb(var(--white-values));
-  --quote-text: var(--white);
+  --quote-text-color: var(--white);
+  --scoutmaster-quote-icon-color: var(--white);
   --donate-box-background-color: var(--white);
   --donation-button-background: var(--white);
   --active-donation-button-text: var(--white);
@@ -50,6 +51,8 @@
 
   --section-top-bottom-padding: 0;
   --gutter-width: 2em;
+  /* should match SCOUT_QUOTE_WIDTH in Quote.tsx */
+  --scout-quote-width: 250px;
 
   --default-font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
@@ -266,9 +269,9 @@ section.quotes {
   --neg-margin: 48px;
 
   background-color: var(--quotes-page-background);
-  color: var(--quote-text);
+  color: var(--quote-text-color);
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 2fr 2fr 2fr;
   grid-template-areas: 'scout-quotes-1 scoutmaster-quote scout-quotes-2';
   gap: 1rem;
   width: 100%;
@@ -276,7 +279,7 @@ section.quotes {
 
   .quote-wrapper {
     position: relative;
-    width: 200px;
+    width: var(--scout-quote-width);
     height: calc(140px - var(--neg-margin));
     margin-bottom: var(--neg-margin);
   }
@@ -292,6 +295,7 @@ section.quotes {
   .foreground-quote,
   .background-quote {
     position: absolute;
+    /* transform: scaleX(1.2); */
   }
 
   .foreground-quote {
@@ -338,12 +342,69 @@ section.quotes {
   }
 
   .quote-text {
+    margin-bottom: 1em;
     padding: 0 3em;
   }
 
   .name-rank-age {
+    margin: 0;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 600;
+  }
+
+  .scoutmaster-quote-content {
+    --scoutmaster-quote-bottom-padding: 3px;
+    --scoutmaster-quote-side-badding: 3px;
+    --scoutmaster-quote-top-padding: 8px;
+
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    .left-quote-icon,
+    .right-quote-icon {
+      fill: var(--scoutmaster-quote-icon-color);
+      border: 2px solid var(--scoutmaster-quote-icon-color);
+      width: calc(20px + var(--scoutmaster-quote-side-badding));
+      height: calc(
+        20px + var(--scoutmaster-quote-bottom-padding) +
+          var(--scoutmaster-quote-top-padding)
+      );
+      border-top: none;
+      padding-bottom: var(--scoutmaster-quote-bottom-padding);
+      padding-top: var(--scoutmaster-quote-top-padding);
+    }
+
+    .left-quote-icon {
+      border-right: none;
+      padding-left: var(--scoutmaster-quote-side-badding);
+    }
+
+    .right-quote-icon {
+      border-left: none;
+      padding-right: var(--scoutmaster-quote-side-badding);
+    }
+
+    .quote-text {
+      padding: 3em 2em 0;
+      font-size: 18px;
+    }
+
+    .name-years {
+      align-self: center;
+      text-align: center;
+      margin-bottom: 1.5em;
+      margin-right: 40px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
   }
 }
 
