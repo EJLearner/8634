@@ -3,16 +3,14 @@
   --active-donation-button-background: var(--dark-green);
   --donation-button-text: var(--dark-green);
   --header-text: var(--dark-green);
-  --calendar-header-text-color: var(--dark-green);
   --increase-donation-button-fill: var(--dark-green);
 
   --light-green: rgb(0, 176, 80);
   --support-matters-header-text: var(--light-green);
-  --calendar-event-title-color: var(--light-green);
   --benefits-text: var(--light-green);
-  --calendar-text-color: var(--light-green);
   --default-button-background: var(--light-green);
   --contact-button-background: var(--light-green);
+  --constact-us-circle-fill: var(--light-green);
 
   --pea-green: rgb(51, 102, 0);
   --nav-bar-text: var(--pea-green);
@@ -23,13 +21,14 @@
 
   --black: rgb(5, 5, 5);
   --general-text: var(--black);
+  --calendar-text-color: var(--black);
 
   --orange: rgb(255, 153, 0);
   --scout-quote-marks: var(--orange);
 
-  --light-yelow: rgb(255, 255, 204);
-  --about-and-donation-background-color: var(--light-yelow);
-  --calendar-page-background-color: var(--light-yelow);
+  --light-yellow: rgb(255, 255, 204);
+  --about-and-donation-background-color: var(--light-yellow);
+  --calendar-page-background-color: var(--light-yellow);
 
   --white-values: 240, 240, 240;
   --white: rgb(var(--white-values));
@@ -53,12 +52,26 @@
   --gray-89: rgb(89, 89, 89);
   --donation-increase-text: var(--gray-89);
 
+  --gray-64: rgb(64, 64, 64);
+  --calendar-header-text-color: var(--gray-64);
+  --calendar-event-title-color: var(--gray-64);
+  --calendar-nav-text-color: var(--gray-64);
+
   --section-top-bottom-padding: 0;
   --gutter-width: 2em;
   /* should match SCOUT_QUOTE_WIDTH in Quote.tsx */
   --scout-quote-width: 250px;
 
-  --default-font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --system-ui-font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --georgia-font-family: Georgia, 'Times New Roman', Times, serif;
+  --times-new-roman-font-family:
+    'Times New Roman', Times, Baskerville, Georgia, serif;
+  --calibri-font-family:
+    Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+  --default-font-family: var(--calibri-font-family);
+  --avenir-next-lt-pro-font-family:
+    'Avenir Next LT Pro', 'Avenir Next', 'Avenir', 'Segoe UI', Helvetica, Arial,
+    sans-serif;
 
   font-family: var(--default-font-family);
   line-height: 1.5;
@@ -110,7 +123,7 @@ button {
   background-color: var(--default-button-background);
   color: var(--default-button-text);
   border: 2px solid transparent;
-  padding: 0.6em 2em;
+  padding: 1em 2em;
   font-size: 0.8rem;
   font-weight: 500;
   outline-width: 0;
@@ -236,7 +249,7 @@ h1 {
     border: 2px solid transparent;
     text-align: center;
     font-size: 0.9rem;
-    padding: 0.6em 2em;
+    padding: 1em 2em;
     color: var(--default-button-text);
     background-color: var(--increase-donation-button-fill);
     text-transform: uppercase;
@@ -263,6 +276,8 @@ section.quotes {
   gap: 1rem;
   width: 100%;
   padding: 1em 1em 0;
+  /* clip the bottom of the section but not the other areas */
+  clip-path: polygon(0 -100%, 100% -100%, 100% 100%, 0% 100%);
 
   & div:nth-child(1),
   & div:nth-child(3) {
@@ -289,7 +304,6 @@ section.quotes {
   .foreground-quote,
   .background-quote {
     position: absolute;
-    /* transform: scaleX(1.2); */
   }
 
   .foreground-quote {
@@ -341,9 +355,10 @@ section.quotes {
   }
 
   .name-rank-age {
+    font-family: var(--times-new-roman-font-family);
     margin: 0;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .scoutmaster-quote-content {
@@ -393,6 +408,7 @@ section.quotes {
 
     .name-years {
       align-self: center;
+      font-family: var(--avenir-next-lt-pro-font-family);
       text-align: center;
       margin-bottom: 1.5em;
       margin-right: 40px;
@@ -407,6 +423,59 @@ section.quotes {
   color: var(--questions-blurb-test);
   text-align: center;
   width: 70%;
+}
+
+.contact-us-section {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 2em;
+  width: 100%;
+  padding: var(--section-top-bottom-padding) var(--gutter-width);
+
+  #contact-us-header {
+    font-size: 2rem;
+  }
+
+  & .circle-images {
+    margin-top: 2rem;
+    position: relative;
+
+    & .circle-shape {
+      position: absolute;
+      fill: var(--constact-us-circle-fill);
+      width: 200px;
+      top: 85px;
+      left: 150px;
+    }
+
+    & .circle-image {
+      border-radius: 50%;
+      border: 8px solid white;
+      outline: 1px solid var(--gray-64);
+      overflow: hidden;
+      display: inline-block;
+      position: absolute;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+
+    & .circle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    & .small-image {
+      width: 250px;
+      height: 250px;
+    }
+
+    & .large-image {
+      width: 300px;
+      height: 300px;
+      top: 120px;
+      left: 250px;
+    }
+  }
 }
 
 .contact-us-form {
