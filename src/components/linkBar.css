@@ -1,0 +1,21 @@
+nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em 2em;
+  display: flex;
+  flex-direction: row;
+  gap: 3em;
+  background-color: var(--nav-bar-background);
+  font-family: var(--times-new-roman-font-family);
+
+  a {
+    color: var(--nav-bar-text);
+    font-weight: bold;
+  }
+
+  a:hover {
+    color: var(--nav-bar-text);
+    text-decoration: underline;
+  }
+}

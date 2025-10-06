@@ -1,0 +1,40 @@
+.calendar-page {
+  width: 100%;
+  background-color: var(--calendar-page-background-color);
+  padding: 1rem;
+  color: var(--calendar-text-color);
+
+  nav {
+    background-color: transparent;
+
+    & a {
+      color: var(--calendar-nav-text-color);
+    }
+
+    & a:hover {
+      color: var(--calendar-nav-text-color);
+    }
+  }
+
+  h1 {
+    text-align: center;
+    color: var(--calendar-header-text-color);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: var(--calendar-event-title-color);
+  }
+
+  p:first-of-type {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+}
