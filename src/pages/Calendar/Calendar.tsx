@@ -1,14 +1,18 @@
+import './calendar.css';
 import {getCalendarItems} from '../../stores/calendarItems';
 import {
+  getDayOfWeekFromDate,
   getDisplayDateFromStandardDate,
   isDaylightSavingTime,
 } from '../../utils/dateTimeUtils';
+import {LinkBar} from '../../components/LinkBar';
 
 export function Calendar() {
   console.log(getCalendarItems());
 
   return (
-    <div>
+    <div className="calendar-page">
+      <LinkBar />
       <h1>Calendar</h1>
 
       {getCalendarItems().map((item) => {
@@ -20,15 +24,15 @@ export function Calendar() {
 
         return (
           <div key={item.date + item.title}>
-            <span>
-              {item.title} - {getDisplayDateFromStandardDate(item.date)}{' '}
-              {timezonePart}
-            </span>{' '}
+            <h2>{item.title}</h2>
             <p>
-              Location: {item.location}, {item.address}
+              {getDayOfWeekFromDate(item.date)}
+              {', '}
+              {getDisplayDateFromStandardDate(item.date)}
               <br />
-              Time: {item.startTimeDisplay} - {item.endTimeDisplay}
+              {item.startTimeDisplay}&ndash;{item.endTimeDisplay} {timezonePart}
             </p>
+            <p>{item.description}</p>
           </div>
         );
       })}
