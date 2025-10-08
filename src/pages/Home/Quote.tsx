@@ -8,7 +8,6 @@ function myTriangleMaker({
   left,
   width,
   height,
-  peakAtTop = true,
 }: {
   top: number;
   left: number;
@@ -19,20 +18,12 @@ function myTriangleMaker({
   const right = left + width;
   const bottom = top + height;
 
-  const points = peakAtTop
-    ? `${left},${bottom} ${right},${bottom} ${(left + right) / 2},${top}`
-    : `${left},${top} ${right},${top} ${(left + right) / 2},${bottom}`;
+  const points = `${left},${top} ${right},${top} ${(left + right) / 2},${bottom}`;
 
   return <polygon points={points} />;
 }
 
-function QuoteShape({
-  className,
-  type,
-}: {
-  className: string;
-  type: 'foreground' | 'background';
-}) {
+function QuoteShape({className}: {className: string}) {
   const svgHeight = 150;
   const rectHeight = 0.666666 * svgHeight;
 
@@ -40,7 +31,7 @@ function QuoteShape({
     top: rectHeight - 1,
     left: 30,
     width: 50,
-    height: type === 'foreground' ? 30 : 70,
+    height: 30,
     peakAtTop: false,
   };
 
@@ -70,8 +61,8 @@ function Quote(props: {
 
   return (
     <div className="quote-wrapper">
-      <QuoteShape className="background-quote" type="background" />
-      <QuoteShape className="foreground-quote" type="foreground" />
+      <QuoteShape className="background-quote" />
+      <QuoteShape className="foreground-quote" />
       <FaQuoteLeft className="left-quote-icon" />
       <FaQuoteRight className="right-quote-icon" />
       <img alt={`${name}'s picture`} className="scout-picture" src={picture} />

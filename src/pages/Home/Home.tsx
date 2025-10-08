@@ -39,13 +39,10 @@ function Home() {
               </ul>
             </div>
           </div>
-          <div>
-            <div className="donate-box">
-              <h2>Empower Future Leaders&#8202;&mdash;&#8202;Donate Today</h2>
-              <a href="https://www.paypal.com/donate/?hosted_button_id=ZQCX9N42G6AMU">
-                Donate
-              </a>
-            </div>
+          <div className="donate-box">
+            <a href="https://www.paypal.com/donate/?hosted_button_id=ZQCX9N42G6AMU">
+              Donate
+            </a>
           </div>
         </div>
         <p className="questions-text">
