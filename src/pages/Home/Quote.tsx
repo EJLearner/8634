@@ -1,52 +1,39 @@
 import {FaQuoteLeft, FaQuoteRight} from 'react-icons/fa';
 
-// should match --scout-quote-width in index.css
-const SCOUT_QUOTE_WIDTH = 250;
-
-function myTriangleMaker({
-  top,
-  left,
-  width,
-  height,
+function QuoteShape({
+  className,
+  isForeground,
 }: {
-  top: number;
-  left: number;
-  width: number;
-  height: number;
-  peakAtTop?: boolean;
+  className: string;
+  isForeground: boolean;
 }) {
-  const right = left + width;
-  const bottom = top + height;
+  const FRONT_QUOTE_SHAPE_FILL_COLOR = 'rgb(63, 126, 0)';
 
-  const points = `${left},${top} ${right},${top} ${(left + right) / 2},${bottom}`;
+  const BEHIND_QUOTE_SHAPE_FILL_COLOR = 'transparent';
+  const BEHIND_QUOTE_SHAPE_STROKE_COLOR = 'rgb(240,240,240)';
 
-  return <polygon points={points} />;
-}
+  // should match green63
+  const fillColor = isForeground
+    ? FRONT_QUOTE_SHAPE_FILL_COLOR
+    : BEHIND_QUOTE_SHAPE_FILL_COLOR;
+  const strokeColor = isForeground
+    ? 'transparent'
+    : BEHIND_QUOTE_SHAPE_STROKE_COLOR;
 
-function QuoteShape({className}: {className: string}) {
-  const svgHeight = 150;
-  const rectHeight = 0.666666 * svgHeight;
+  const svg = `<svg preserveAspectRatio="none" viewBox="0 0 250 130" xmlns="http://www.w3.org/2000/svg">
+  <rect height="100" rx="20" ry="20" width="100%" x="0" y="0" fill="${fillColor}" stroke="${strokeColor}"></rect>
+  <polygon points="30,99 80,99 55,129" fill="${fillColor}" stroke="${strokeColor}"></polygon>
+</svg>`;
 
-  const triangleProperties = {
-    top: rectHeight - 1,
-    left: 30,
-    width: 50,
-    height: 30,
-    peakAtTop: false,
-  };
+  const encodedSvg = encodeURIComponent(svg);
 
   return (
-    <svg
+    <img
+      aria-hidden="true"
       className={className}
-      height="200"
-      preserveAspectRatio="none"
-      viewBox={`0 0 ${SCOUT_QUOTE_WIDTH} 200`}
-      width={SCOUT_QUOTE_WIDTH}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect height={rectHeight} rx="20" ry="20" width="100%" x="0" y="0" />
-      {myTriangleMaker(triangleProperties)}
-    </svg>
+      color="var(--front-quote-shape-fill-color)"
+      src={`data:image/svg+xml;utf8,${encodedSvg}`}
+    />
   );
 }
 
@@ -61,13 +48,13 @@ function Quote(props: {
 
   return (
     <div className="quote-wrapper">
-      <QuoteShape className="background-quote" />
-      <QuoteShape className="foreground-quote" />
-      <FaQuoteLeft className="left-quote-icon" />
-      <FaQuoteRight className="right-quote-icon" />
+      <QuoteShape className="background-quote" isForeground={false} />
+      <QuoteShape className="foreground-quote" isForeground={true} />
       <img alt={`${name}'s picture`} className="scout-picture" src={picture} />
       <div className="quote-content">
+        <FaQuoteLeft className="left-quote-icon" />
         <p className="quote-text">{text}</p>
+        <FaQuoteRight className="right-quote-icon" />
         <p className="name-rank-age">
           {name}, {rank} Scout&ndash;Age {age}
         </p>

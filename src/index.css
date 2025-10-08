@@ -61,7 +61,7 @@
   --section-top-bottom-padding: 0;
   --gutter-width: 2em;
   /* should match SCOUT_QUOTE_WIDTH in Quote.tsx */
-  --scout-quote-width: 250px;
+  --scout-quote-width: 100%;
 
   --system-ui-font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   --georgia-font-family: Georgia, 'Times New Roman', Times, serif;
@@ -245,7 +245,7 @@ section.quotes {
   background-color: var(--quotes-page-background);
   color: var(--quote-text-color);
   display: grid;
-  grid-template-columns: 3fr 2fr 3fr;
+  grid-template-columns: 2fr 2fr 2fr;
   grid-template-areas: 'scout-quotes-1 scoutmaster-quote scout-quotes-2';
   gap: 0.5rem;
   width: 100%;
@@ -253,8 +253,8 @@ section.quotes {
   /* clip the bottom of the section but not the other areas */
   clip-path: polygon(0 -100%, 100% -100%, 100% 100%, 0% 100%);
 
-  & div:nth-child(1),
-  & div:nth-child(3) {
+  & > div:nth-child(1),
+  & > div:nth-child(3) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,8 +263,8 @@ section.quotes {
   .quote-wrapper {
     position: relative;
     width: var(--scout-quote-width);
-    height: calc(140px - var(--neg-margin));
-    margin-bottom: var(--neg-margin);
+    /* height: calc(140px - var(--neg-margin)); */
+    /* margin-bottom: var(--neg-margin); */
   }
 
   .scout-picture {
@@ -277,24 +277,29 @@ section.quotes {
 
   .foreground-quote,
   .background-quote {
-    position: absolute;
+    width: 100%;
+    height: auto;
   }
 
   .foreground-quote {
     fill: var(--front-quote-shape-fill-color);
+    /* just used so that this is on top of the background shape*/
+    position: relative;
   }
 
   .background-quote {
+    position: absolute;
     top: -5px;
     left: 5px;
     fill: transparent;
     stroke: var(--behind-quote-shape-outline-color);
+    /* border: 1px solid var(--behind-quote-shape-outline-color); */
   }
 
   .left-quote-icon {
     position: absolute;
     top: 10px;
-    left: 5px;
+    left: 7px;
     width: 20px;
     height: 20px;
     fill: var(--scout-quote-marks);
@@ -312,14 +317,16 @@ section.quotes {
   }
 
   .quote-content {
-    position: relative;
+    position: absolute;
+    top: 0;
+    bottom: 60px;
     width: 100%;
-    height: 100%;
-    font-size: 0.6rem;
+    /* height: 100%; */
+    font-size: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 2em;
+    padding-top: 1em;
     align-items: center;
   }
 
