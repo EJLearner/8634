@@ -1,6 +1,6 @@
 :root {
   --dark-green: rgb(0, 128, 58);
-  --active-donation-button-background: var(--dark-green);
+  --default-button-background: var(--dark-green);
   --donation-button-text: var(--dark-green);
   --header-text: var(--dark-green);
   --increase-donation-button-fill: var(--dark-green);
@@ -8,7 +8,6 @@
   --light-green: rgb(0, 176, 80);
   --support-matters-header-text: var(--light-green);
   --benefits-text: var(--light-green);
-  --default-button-background: var(--light-green);
   --contact-button-background: var(--light-green);
   --constact-us-circle-fill: var(--light-green);
 
@@ -125,6 +124,7 @@ button {
   background-color: var(--default-button-background);
   color: var(--default-button-text);
   border: 2px solid transparent;
+  font-family: var(--calibri-font-family);
   padding: 1em 2em;
   font-size: 0.8rem;
   font-weight: 500;
@@ -218,6 +218,10 @@ h1 {
 
   ul li {
     padding-left: clamp(0.5em, 2.5vw, 2em);
+  }
+
+  ul li::marker {
+    color: var(--benefits-text);
   }
 
   ul li::before {
