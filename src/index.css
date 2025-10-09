@@ -48,7 +48,7 @@
   --general-border-color: var(--gray-158);
 
   --gray127: rgb(127, 127, 127);
-  --questions-blurb-test: var(--gray127);
+  --questions-blurb-text: var(--gray127);
 
   --gray-89: rgb(89, 89, 89);
   --donation-increase-text: var(--gray-89);
@@ -109,7 +109,7 @@ body:has(.contact-us-form[open]) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1000px;
+  width: 1200px;
   max-width: 80%;
   position: relative;
 }
@@ -133,6 +133,7 @@ button {
   outline-width: 0;
   cursor: pointer;
   transition: border-color 0.25s;
+  text-transform: uppercase;
 }
 
 button:hover {
@@ -182,7 +183,7 @@ h1 {
   color: var(--header-text);
   font-family: var(--garamond-font-family);
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .support-benefits-donate {
@@ -192,6 +193,9 @@ h1 {
 }
 
 .support-matters-header {
+  margin-top: 0;
+  /* clunky way to line this up with the benefits section better */
+  line-height: 85%;
   color: var(--support-matters-header-text);
 }
 
@@ -218,6 +222,7 @@ h1 {
 
 .donate-box {
   align-self: center;
+  margin: 2em 0;
 
   a {
     border: 2px solid transparent;
@@ -263,8 +268,10 @@ section.quotes {
   .quote-wrapper {
     position: relative;
     width: var(--scout-quote-width);
-    /* height: calc(140px - var(--neg-margin)); */
-    /* margin-bottom: var(--neg-margin); */
+  }
+
+  .quote-wrapper:first-of-type {
+    margin-bottom: 2em;
   }
 
   .scout-picture {
@@ -273,6 +280,9 @@ section.quotes {
     position: absolute;
     left: calc(50% - var(--picture-diameter) / 2);
     top: calc(var(--picture-diameter) / -2);
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
   }
 
   .foreground-quote,
@@ -369,6 +379,7 @@ section.quotes {
       );
       padding-bottom: var(--scoutmaster-quote-bottom-padding);
       padding-top: var(--scoutmaster-quote-top-padding);
+      bottom: 80px;
     }
 
     .left-quote-icon {
@@ -384,7 +395,7 @@ section.quotes {
     }
 
     .quote-text {
-      padding: 3em 2em 0;
+      padding: 2em 2em 1em;
       font-size: 18px;
     }
 
@@ -402,14 +413,14 @@ section.quotes {
 
 .questions-text {
   font-size: 0.9rem;
-  color: var(--questions-blurb-test);
+  color: var(--questions-blurb-text);
   text-align: center;
   width: 70%;
 }
 
 .contact-us-section {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 52% 48%;
   gap: 2em;
   width: 100%;
   padding: var(--section-top-bottom-padding) var(--gutter-width);

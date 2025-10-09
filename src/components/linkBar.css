@@ -5,6 +5,8 @@ nav {
   padding: 0.5em 2em;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
   gap: 3em;
   background-color: var(--nav-bar-background);
   font-family: var(--times-new-roman-font-family);

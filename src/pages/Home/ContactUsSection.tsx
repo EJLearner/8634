@@ -36,13 +36,20 @@ export function ContactUsSection({
           Contact Us
         </button>
         <p className="history">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Troop 8634 was chartered on February 1, 2019 originally at Covenant of
+          Grace PCA. 8634 started with seven scouts--sisters of current boy
+          scouts who were looking for more than crafts and cookies. In our first
+          year, we participated in district Camporee, went to summer camp,
+          Assateague, Washington DC, horseback riding and hiking, and fearlessly
+          used navigation and map reading skills when we got lost. We had the
+          first female Eagle Scout in the former Arrowhead district and first
+          female OA Chapter Chief. Our scouts have staffed summer camp and Cub
+          Adventure camp and have joined Venture Crews and Sea Scout ships. We
+          have graduated five Eagle Scouts with five more coming soon. The
+          scouts have earned the Saffran Eagle award from summer camp four years
+          running and came in third overall at the 2024 district camporee. Our
+          focus is on building skills, independence, and leadership all in a
+          welcoming and inclusive community.
         </p>
         <Dialog onClose={() => dialogRef.current?.close()} ref={dialogRef} />
       </div>

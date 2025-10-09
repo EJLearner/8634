@@ -13,7 +13,9 @@ function Home() {
       <img alt="Scouts in Troop" className="top-photo" src={topPicture} />
       <section className="about-and-donation">
         <h1 id="donate-header">
-          Invest in future changemakers. Give today to inspire tomorrow.
+          Invest in future changemakers.
+          <br />
+          Give today to inspire tomorrow.
         </h1>
         <div className="support-benefits-donate">
           <div>
@@ -25,25 +27,25 @@ function Home() {
               experiences in leadership, outdoor adventure, and community
               service.
             </p>
-            <div className="benefits">
-              Benefits of scouting
-              <ul>
-                <li>Leadership Development</li>
-                <li>Teamwork and Collaboration</li>
-                <li>Outdoor Skills and Appreciation</li>
-                <li>Community Service</li>
-                <li>Personal Growth</li>
-                <li>Ethical Values</li>
-                <li>Physical Fitness</li>
-                <li>Lifelong Frendships</li>
-              </ul>
-            </div>
           </div>
-          <div className="donate-box">
-            <a href="https://www.paypal.com/donate/?hosted_button_id=ZQCX9N42G6AMU">
-              Donate
-            </a>
+          <div className="benefits">
+            Benefits of scouting
+            <ul>
+              <li>Leadership Development</li>
+              <li>Teamwork and Collaboration</li>
+              <li>Outdoor Skills and Appreciation</li>
+              <li>Community Service</li>
+              <li>Personal Growth</li>
+              <li>Ethical Values</li>
+              <li>Physical Fitness</li>
+              <li>Lifelong Frendships</li>
+            </ul>
           </div>
+        </div>
+        <div className="donate-box">
+          <a href="https://www.paypal.com/donate/?hosted_button_id=ZQCX9N42G6AMU">
+            Donate Now
+          </a>
         </div>
         <p className="questions-text">
           If you have questions about giving or would like to learn more about
