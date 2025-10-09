@@ -1,5 +1,5 @@
 import {useRef} from 'react';
-import topPicture from '../../assets/images/scout-group.png';
+import topPicture from '../../assets/images/scout-group.jpg';
 import {LinkBar} from '../../components/LinkBar';
 import {ContactUsSection} from './ContactUsSection';
 import {QuotesSection} from './QuotesSection';

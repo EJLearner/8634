@@ -13,11 +13,11 @@ function QuotesSection() {
     <section className="quotes">
       {/* TODO: After publish - would be nice to improve grid so that I can render a map of quotes with less markup here */}
 
-      <div>
+      <div className="scout-quotes-1">
         <Quote {...scoutQuotesInfo[0]} />
         <Quote {...scoutQuotesInfo[1]} />
       </div>
-      <div>
+      <div className="scoutmaster-quote">
         <div className="scoutmaster-quote-content">
           <FaQuoteLeft className="left-quote-icon" />
           <FaQuoteRight className="right-quote-icon" />
@@ -28,7 +28,7 @@ function QuotesSection() {
           </p>
         </div>
       </div>
-      <div>
+      <div className="scout-quotes-2">
         <Quote {...scoutQuotesInfo[2]} />
         <Quote {...scoutQuotesInfo[3]} />
       </div>

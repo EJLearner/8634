@@ -1,5 +1,5 @@
-import scoutsRaftingPng from '../../assets/images/scouts-rafting.png';
-import scoutCookingPng from '../../assets/images/scout-cooking.png';
+import scoutsRaftingPic from '../../assets/images/scouts-rafting.png';
+import scoutCookingPic from '../../assets/images/scout-cooking.jpg';
 
 import {Dialog} from './Dialog';
 
@@ -26,7 +26,7 @@ export function ContactUsSection({
 }) {
   return (
     <section className="contact-us-section">
-      <div>
+      <div className="about-us">
         <h2 id="contact-us-header">
           Want to Know More?
           <br />
@@ -65,12 +65,12 @@ export function ContactUsSection({
         <CircleImage
           alt="Scouts rafting"
           className="small-image"
-          src={scoutsRaftingPng}
+          src={scoutsRaftingPic}
         />
         <CircleImage
           alt="Scout cooking"
           className="large-image"
-          src={scoutCookingPng}
+          src={scoutCookingPic}
         />
       </div>
     </section>
