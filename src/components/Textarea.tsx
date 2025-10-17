@@ -42,12 +42,14 @@ export function Textarea({
         id={id}
         name={id}
         onBlur={(e) => {
-          if (textboxRef?.current) {
+          if (textboxRef.current) {
             updateValidity(textboxRef.current, label);
           }
           onBlurProp?.(e.target.value);
         }}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
         ref={textboxRef}
         required={required}
         rows={rows}

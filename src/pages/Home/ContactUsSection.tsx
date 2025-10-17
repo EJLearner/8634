@@ -10,7 +10,7 @@ function CircleImage({
 }: {
   src: string;
   alt: string;
-  className?: string;
+  className: string;
 }) {
   return (
     <div className={`circle-image ${className}`}>

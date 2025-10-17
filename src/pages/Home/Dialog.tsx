@@ -22,7 +22,9 @@ export function Dialog({
         <Textbox
           id="name"
           label="Name"
-          onChange={(value: string) => setName(value)}
+          onChange={(value: string) => {
+            setName(value);
+          }}
           pattern=".*\S.*"
           required
           value={name}
@@ -30,7 +32,9 @@ export function Dialog({
         <Textbox
           id="email"
           label="Email"
-          onChange={(value: string) => setEmail(value)}
+          onChange={(value: string) => {
+            setEmail(value);
+          }}
           pattern="^\S+@\S+\.\S+$"
           required
           value={email}
@@ -38,14 +42,18 @@ export function Dialog({
         <Textbox
           id="phone"
           label="Phone"
-          onChange={(value: string) => setPhone(value)}
+          onChange={(value: string) => {
+            setPhone(value);
+          }}
           pattern="^(?:\D*\d\D*){10,}$"
           value={phone}
         />
         <Textarea
           id="message"
           label="Message"
-          onChange={(value: string) => setMessage(value)}
+          onChange={(value: string) => {
+            setMessage(value);
+          }}
           required
           value={message}
         />

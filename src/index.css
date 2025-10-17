@@ -58,7 +58,7 @@
   --calendar-nav-text-color: var(--gray-64);
 
   --section-top-bottom-padding: 0;
-  --gutter-width: 2em;
+  --content-side-padding: 2em;
 
   --system-ui-font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   --georgia-font-family: Georgia, 'Times New Roman', Times, serif;
@@ -166,7 +166,7 @@ button:focus-visible {
 }
 
 .about-and-donation {
-  padding: var(--section-top-bottom-padding) var(--gutter-width);
+  padding: var(--section-top-bottom-padding) var(--content-side-padding);
   background-color: var(--about-and-donation-background-color);
   display: flex;
   flex-direction: column;
@@ -264,9 +264,18 @@ section.quotes {
   grid-template-areas: 'scout-quotes-1 scoutmaster-quote scout-quotes-2';
   gap: 0.5rem;
   width: 100%;
-  padding: 1em 1em 0;
-  /* clip the bottom of the section but not the other areas */
-  clip-path: polygon(0 -100%, 100% -100%, 100% 100%, 0% 100%);
+  padding: 1em var(--content-side-padding) 0;
+
+  /*
+    For when only scoutmaster quote should be shown. This may be temporary. Currently, we're waiting for more
+    quotes from the scouts.
+  */
+  &.only-scoutmaster {
+    gap: 0;
+    grid-template-columns: 1fr;
+    padding-left: var(--content-side-padding);
+    padding-right: var(--content-side-padding);
+  }
 
   .scout-quotes-1,
   .scout-quotes-2 {
@@ -325,24 +334,22 @@ section.quotes {
     /* border: 1px solid var(--behind-quote-shape-outline-color); */
   }
 
-  .left-quote-icon {
+  .left-quote-icon,
+  .right-quote-icon {
     position: absolute;
-    top: 10px;
-    left: 7px;
     width: 20px;
     height: 20px;
     fill: var(--scout-quote-marks);
   }
 
-  .right-quote-icon {
-    --quote-distance-from-bottom: 70px;
+  .left-quote-icon {
+    top: 10px;
+    left: 7px;
+  }
 
-    position: absolute;
-    bottom: calc(var(--quote-distance-from-bottom) - var(--neg-margin));
+  .right-quote-icon {
+    bottom: calc(70px - 48px);
     right: 4px;
-    width: 20px;
-    height: 20px;
-    fill: var(--scout-quote-marks);
   }
 
   .quote-content {
@@ -447,7 +454,7 @@ section.quotes {
   flex-wrap: wrap;
   gap: 2em;
   width: 100%;
-  padding: var(--section-top-bottom-padding) var(--gutter-width);
+  padding: var(--section-top-bottom-padding) var(--content-side-padding);
 
   #contact-us-header {
     font-size: clamp(1.1rem, 3.5vw, 2rem);
@@ -574,7 +581,7 @@ section.quotes {
   }
 
   :root {
-    --gutter-width: 1em;
+    --content-side-padding: 1em;
   }
 }
 
@@ -606,5 +613,4 @@ section.quotes {
   }
 }
 
-/* TODO: Improve mobile layout */
 /* TODO: After publish: Add dark mode styles */

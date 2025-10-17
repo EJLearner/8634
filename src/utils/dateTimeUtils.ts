@@ -6,7 +6,7 @@ function convertMilitaryTimeToUserFriendly(time: string): string {
   const [hours, minutes] = time.split(':').map(Number);
   const period = hours >= 12 ? 'PM' : 'AM';
   const adjustedHours = hours % 12 || 12; // Convert 0 to 12 for 12 AM
-  return `${adjustedHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+  return `${String(adjustedHours)}:${minutes.toString().padStart(2, '0')} ${period}`;
 }
 
 function getCalendarItems(): string[] {
@@ -38,16 +38,6 @@ function getDisplayDateFromStandardDate(dateString: string): string {
     typeof dateString === 'string' ? `${dateString}T00:00:00` : dateString,
   );
 
-  console.log(date);
-
-  console.log(
-    date.toLocaleDateString('en-us', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }),
-  );
-
   return date.toLocaleDateString('en-us', {
     year: 'numeric',
     month: 'long',
@@ -68,10 +58,31 @@ function getDayOfWeekFromDate(
   });
 }
 
+function getTimeSince(date: string, unit: 'years' | 'months' | 'days'): number {
+  const start = Temporal.PlainDate.from(date);
+  const today = Temporal.Now.plainDateISO();
+
+  console.log({start, today});
+
+  const difference = start.until(today, {largestUnit: unit});
+  return difference[unit];
+}
+
+function hasDatePassed(date: string): boolean {
+  const todayTemporal = Temporal.Now.plainDateISO();
+  const dateTemporal = Temporal.PlainDate.from(date);
+
+  console.log({todayTemporal, dateTemporal});
+
+  return Temporal.PlainDate.compare(dateTemporal, todayTemporal) < 0;
+}
+
 export {
   convertMilitaryTimeToUserFriendly,
   getCalendarItems,
   isDaylightSavingTime,
+  hasDatePassed,
+  getTimeSince,
   getDisplayDateFromStandardDate,
   getDayOfWeekFromDate,
 };

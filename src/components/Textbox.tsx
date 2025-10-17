@@ -43,13 +43,15 @@ export function Textbox({
         id={id}
         name={id}
         onBlur={(e) => {
-          if (inputRef?.current) {
+          if (inputRef.current) {
             updateValidity(inputRef.current, label);
           }
 
           onBlurProp?.(e.target.value);
         }}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
         pattern={pattern}
         ref={inputRef}
         required={required}
