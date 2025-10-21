@@ -42,7 +42,17 @@ const allEvents = [
   {
     date: '2025-10-23',
     ...COMMON.REGULAR_MEETING,
-    description: 'SPL Elections',
+    description:
+      'SPL Elections and Kawasakie Exchange Program presentation by Caden',
+  },
+  {
+    date: '2025-10-24',
+    endDate: '2025-10-26',
+    title: 'Assateague Camping Trip',
+    description: 'Camp on the beach at Assateague State Park.',
+    startTimeDisplay: '6:00 PM',
+    timeZone: ET,
+    location: 'Assateague State Park',
   },
   {
     date: '2025-10-30',
@@ -60,26 +70,7 @@ const allEvents = [
   {
     date: '2025-11-06',
     title: 'Court of Honor',
-  },
-  {
-    date: '2025-11-09',
-    title: 'Pumpkin Drop',
-    startTimeDisplay: '9:00 AM',
-    endTimeDisplay: '12:00 PM',
-    timeZone: ET,
-    scoutDressCode: CLASS_A,
-    location: 'Sykesville Fire Department',
-    description:
-      'Get your Engineering hat on and design a contraption to protect a pumpkin from being dropped 50, 75, and even 100 ft!',
-  },
-  {
-    date: '2025-10-24',
-    endDate: '2025-10-26',
-    title: 'Assateague Camping Trip',
-    description: 'Camp on the beach at Assateague State Park.',
-    startTimeDisplay: '6:00 PM',
-    timeZone: ET,
-    location: 'Assateague State Park',
+    ...TRINITY,
   },
   {
     date: '2025-11-08',
@@ -100,6 +91,17 @@ const allEvents = [
     link: 'https://scoutingevent.com/220-101315',
   },
   {
+    date: '2025-11-09',
+    title: 'Pumpkin Drop',
+    startTimeDisplay: '9:00 AM',
+    endTimeDisplay: '12:00 PM',
+    timeZone: ET,
+    scoutDressCode: CLASS_A,
+    location: 'Sykesville Fire Department',
+    description:
+      'Get your Engineering hat on and design a contraption to protect a pumpkin from being dropped 50, 75, and even 100 ft!',
+  },
+  {
     date: '2025-11-13',
     ...COMMON.REGULAR_MEETING,
     title: 'PLC',
@@ -118,6 +120,14 @@ const allEvents = [
     description:
       'Participate in Gettysburg Luminaries and visit battlefield/hike Johnny Reb trail',
     scoutDressCode: CLASS_A,
+  },
+  {
+    date: '2026-07-30',
+    endDate: '2026-08-07',
+    title: 'Maine High Adventure',
+    location: 'Maine',
+    description:
+      'An unforgettable experience in the woods and waters of Maine followed by whale watching in Portland!',
   },
 ];
 

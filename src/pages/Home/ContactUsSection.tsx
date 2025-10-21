@@ -2,6 +2,7 @@ import scoutsRaftingPic from '../../assets/images/scouts-rafting.png';
 import scoutCookingPic from '../../assets/images/scout-cooking.jpg';
 
 import {Dialog} from './Dialog';
+import {ANCHOR_IDS} from '../../utils/constants';
 
 function CircleImage({
   src,
@@ -27,7 +28,7 @@ export function ContactUsSection({
   return (
     <section className="contact-us-section">
       <div className="about-us">
-        <h2 id="contact-us-header">
+        <h2 id={ANCHOR_IDS.CONTACT_US}>
           Want to Know More?
           <br />
           Reach out to us!

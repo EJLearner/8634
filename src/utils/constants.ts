@@ -6,4 +6,8 @@ const timeZones = {
   UTC: 'UTC',
 };
 
-export {timeZones};
+const ANCHOR_IDS = {
+  CONTACT_US: 'contact-us-header',
+};
+
+export {timeZones, ANCHOR_IDS};

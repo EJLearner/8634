@@ -12,20 +12,21 @@ function Home() {
       <LinkBar />
       <img alt="Scouts in Troop" className="top-photo" src={topPicture} />
       <section className="about-and-donation">
-        <h1 id="donate-header">
+        <h1 id="support-header">
           Invest in future changemakers.
           <br />
-          Give today to inspire tomorrow.
+          Learn more today to inspire tomorrow.
         </h1>
-        <div className="support-benefits-donate">
+        <div className="support-benefits">
           <div>
             <h2 className="support-matters-header">Your Support Matters</h2>
             <p>
-              When you donate to troop 8634, you are helping girls and young
-              women in scouting build courage, confidence, and character. With
-              your support, girls in our community gain access to life-changing
-              experiences in leadership, outdoor adventure, and community
-              service.
+              When you support girls in Scouting, you’re investing in courage,
+              confidence, and character. From building outdoor skills to leading
+              service projects, girls in Scouting are learning to tackle
+              challenges, make a difference in their communities, and grow into
+              strong, capable leaders. Your support helps provide them with the
+              tools, mentorship, and opportunities they need to thrive.
             </p>
           </div>
           <div className="benefits">
@@ -42,11 +43,14 @@ function Home() {
             </ul>
           </div>
         </div>
+        {/* Removed for now because we need confirmation that the troop can have a donate button */
+        /*
         <div className="donate-box">
           <a href="https://www.paypal.com/donate/?hosted_button_id=ZQCX9N42G6AMU">
             Donate Now
           </a>
         </div>
+          */}
         <p className="questions-text">
           If you have questions about giving or would like to learn more about
           our programs, please{' '}
