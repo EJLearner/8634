@@ -69,7 +69,7 @@ function FeaturedEventsSection() {
           }
           href="https://www.zeffy.com/en-US/ticketing/papa-johns-bogo-fundraiser-cards-2"
           image={papaJohnsLogo}
-          imageAlt="Buy BOGO Card"
+          imageAlt="Papa John's Logo"
           title="Papa John’s BOGO Fundraising Cards"
         />
         <Event
