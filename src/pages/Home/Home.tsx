@@ -3,6 +3,7 @@ import topPicture from '../../assets/images/scout-group.jpg';
 import {LinkBar} from '../../components/LinkBar';
 import {ContactUsSection} from './ContactUsSection';
 import {QuotesSection} from './QuotesSection';
+import {FeaturedEventsSection} from './FeaturedEventsSection';
 
 function Home() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -63,6 +64,7 @@ function Home() {
           .
         </p>
       </section>
+      <FeaturedEventsSection />
       <QuotesSection />
       <ContactUsSection ref={dialogRef} />
     </>

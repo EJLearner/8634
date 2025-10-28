@@ -105,7 +105,6 @@ body:has(.contact-us-form[open]) {
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 1200px;
   max-width: 100%;
   position: relative;

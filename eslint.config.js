@@ -33,6 +33,7 @@ export default tseslint.config([
       'prefer-template': 'error',
       'react/jsx-sort-props': 'error',
       'react/jsx-no-useless-fragment': 'error',
+      'react/jsx-curly-brace-presence': 'error',
     },
   },
 ]);
