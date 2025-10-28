@@ -72,7 +72,7 @@ export function Calendar() {
                 {link && (
                   <>
                     <a href={link} rel="noreferrer" target="_blank">
-                      Event Link
+                      {link}
                     </a>
                     <br />
                   </>
