@@ -76,19 +76,18 @@ function FeaturedEventsSection() {
           buttonText="Learn More"
           description={
             <>
-              Maine High Adventure (MHA) is a Scouting America high adventure
-              program located in North Maine that offers wilderness treks, most
-              notably canoe trips on the Allagash Wilderness Waterway and 100km
-              treks through the North Woods. The program provides trained guides
-              and gear for these expeditions, focusing on authentic, remote
-              backcountry experiences with a strong emphasis on outdoor skills
-              and environmental interpretation.
+              Support our girls in scouting—and get your coffee fix at the same
+              time! When you purchase coffee, tea, or cocoa through our Giving
+              Bean fundraiser, a portion of every sale goes directly to support
+              our troop’s activities, adventures, and community projects. Your
+              morning cup can help build courage, confidence, and character—one
+              brew at a time!
             </>
           }
-          href="https://www.mainehighadventure.org/"
+          href="https://www.givingbean.com/orderform2/my_own_orderform.php?pstr=NzI2NDV8fDE="
           image={raftingPicture}
-          imageAlt="Rafting"
-          title="Troop 8634 Maine High Adventure Trip"
+          imageAlt="Coffee?"
+          title="Coffee for a Cause"
         />
       </div>
     </section>
