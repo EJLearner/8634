@@ -30,7 +30,7 @@ describe('Home', () => {
     expect(mdAreaElement).toBeInTheDocument();
   });
 
-  it.only('does not have "MD Area" in the document if date is after 2025-12-06', () => {
+  it('does not have "MD Area" in the document if date is after 2025-12-06', () => {
     // mock date of 2025-12-07 using vi.setSystemTime
     vi.setSystemTime(new Date('2025-12-08'));
 

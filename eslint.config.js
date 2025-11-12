@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
 import react from 'eslint-plugin-react';
+import vitest from '@vitest/eslint-plugin';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import {globalIgnores} from 'eslint/config';
@@ -17,7 +18,7 @@ export default tseslint.config([
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
-    plugins: {react},
+    plugins: {react, vitest},
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
@@ -40,6 +41,9 @@ export default tseslint.config([
   {
     files: ['**/*.test.{ts,tsx}'],
     rules: {
+      ...vitest.configs.recommended.rules,
+      'vitest/no-disabled-tests': 'error',
+      'vitest/no-focused-tests': 'error',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
