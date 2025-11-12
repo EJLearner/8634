@@ -62,17 +62,13 @@ function getTimeSince(date: string, unit: 'years' | 'months' | 'days'): number {
   const start = Temporal.PlainDate.from(date);
   const today = Temporal.Now.plainDateISO();
 
-  console.log({start, today});
-
   const difference = start.until(today, {largestUnit: unit});
   return difference[unit];
 }
 
 function hasDatePassed(date: string): boolean {
-  const todayTemporal = Temporal.Now.plainDateISO();
+  const todayTemporal = Temporal.Now.zonedDateTimeISO();
   const dateTemporal = Temporal.PlainDate.from(date);
-
-  console.log({todayTemporal, dateTemporal});
 
   return Temporal.PlainDate.compare(dateTemporal, todayTemporal) < 0;
 }

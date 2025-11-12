@@ -23,6 +23,10 @@
     gap: 0.5rem;
   }
 
+  .events-list p + p {
+    margin-top: 1rem;
+  }
+
   img {
     width: 100%;
     /* 

@@ -30,8 +30,6 @@ interface ItemType {
 }
 
 export function Calendar() {
-  console.log(getCalendarItems());
-
   return (
     <div className="calendar-page">
       <LinkBar />

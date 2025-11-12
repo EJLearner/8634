@@ -29,11 +29,20 @@ export default tseslint.config([
     },
     rules: {
       'no-warning-comments': 'warn',
+      'no-console': 'error',
       'object-shorthand': 'error',
       'prefer-template': 'error',
+      'react/jsx-curly-brace-presence': 'error',
       'react/jsx-sort-props': 'error',
       'react/jsx-no-useless-fragment': 'error',
-      'react/jsx-curly-brace-presence': 'error',
+    },
+  },
+  {
+    files: ['**/*.test.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
     },
   },
 ]);

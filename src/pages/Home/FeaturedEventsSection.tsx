@@ -1,9 +1,10 @@
 import breakfastSantaPicture from '../../assets/images/santa.jpg';
+import coffeePicture from '../../assets/images/coffee.png';
 import papaJohnsLogo from '../../assets/images/papa-johns-logo.jpg';
-import raftingPicture from '../../assets/images/maine-rafting-picture.jpg';
 
 import './FeaturedEvents.css';
 import type {ReactNode} from 'react';
+import {hasDatePassed} from '../../utils/dateTimeUtils';
 
 function Event({
   href,
@@ -34,7 +35,41 @@ function Event({
   );
 }
 
+function getCoffeeEventLinkAndDescription() {
+  const isLocalDropOffAvailable = !hasDatePassed('2025-12-06');
+
+  if (isLocalDropOffAvailable) {
+    return {
+      description: (
+        <p>
+          If you’re in the Reisterstown, MD area, you can make a difference just
+          by enjoying your daily coffee! When you order through our fundraiser
+          website by December 6th, your coffee or tea will be hand-delivered
+          right to you by one of our Scouts—no shipping needed! Every purchase
+          directly supports our troop, so sip with purpose and help us reach our
+          goals.
+        </p>
+      ),
+      href: 'https://www.givingbean.com/orderform2/my_own_orderform.php?pstr=NzI2NDV8fDE=',
+    };
+  }
+
+  return {
+    description: (
+      <p>
+        You can make a difference just by enjoying your daily coffee! When you
+        order through our fundraiser website, your coffee or tea will be shipped
+        to you! Every purchase directly supports our troop, so sip with purpose
+        and help us reach our goals.
+      </p>
+    ),
+    href: 'https://www.givingbean.com/store/home.php?partner=72645',
+  };
+}
+
 function FeaturedEventsSection() {
+  const {description, href} = getCoffeeEventLinkAndDescription();
+
   return (
     <section className="featured-events">
       <h2>Featured Events</h2>
@@ -42,14 +77,14 @@ function FeaturedEventsSection() {
         <Event
           buttonText="Buy Tickets"
           description={
-            <>
+            <p>
               Start your holiday season with joy at our annual{' '}
               <i>Breakfast with Santa</i>! Enjoy a delicious breakfast buffet,
               festive holiday music, and cheerful decorations. Children can
               share their wish lists, take photos with Santa, and enjoy fun
               crafts and activities. It’s the perfect way to kick off the
               holiday season with family and friends!
-            </>
+            </p>
           }
           href="https://www.zeffy.com/en-US/ticketing/troop-8634-breakfast-with-santa"
           image={breakfastSantaPicture}
@@ -59,13 +94,13 @@ function FeaturedEventsSection() {
         <Event
           buttonText="Buy BOGO Card"
           description={
-            <>
+            <p>
               Support our Papa John’s BOGO (buy one, get one) fundraiser cards.
               These are discount cards sold for $15. They provide a “buy one
               pizza, get one free” deal, with the free pizza being of equal or
               lesser value, and can be used any day from January 2026 to
               December 2026 at participating locations in MD, DC, and VA.
-            </>
+            </p>
           }
           href="https://www.zeffy.com/en-US/ticketing/papa-johns-bogo-fundraiser-cards-2"
           image={papaJohnsLogo}
@@ -73,21 +108,11 @@ function FeaturedEventsSection() {
           title="Papa John’s BOGO Fundraising Cards"
         />
         <Event
-          buttonText="Learn More"
-          description={
-            <>
-              Support our girls in scouting—and get your coffee fix at the same
-              time! When you purchase coffee, tea, or cocoa through our Giving
-              Bean fundraiser, a portion of every sale goes directly to support
-              our troop’s activities, adventures, and community projects. Your
-              morning cup can help build courage, confidence, and character—one
-              brew at a time!
-            </>
-          }
-          href="https://www.givingbean.com/orderform2/my_own_orderform.php?pstr=NzI2NDV8fDE="
-          image={raftingPicture}
-          imageAlt="Coffee?"
-          title="Coffee for a Cause"
+          {...{description, href}}
+          buttonText="Buy Coffee"
+          image={coffeePicture}
+          imageAlt="Giving Bean Coffee"
+          title="Giving Bean Coffee For A Cause"
         />
       </div>
     </section>
