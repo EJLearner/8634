@@ -6,6 +6,13 @@ const {ET} = timeZones;
 const TRINITY = {
   location: 'Trinity Lutheran Church',
   address: '117 Main Street Reisterstown, MD 21136',
+  timeZone: ET,
+};
+
+const BROAD_CREEK = {
+  location: 'Broad Creek Scout Reservation',
+  address: 'Whiteford, MD, 21160',
+  timeZone: ET,
 };
 
 const COMMON = {
@@ -15,6 +22,13 @@ const COMMON = {
     startTimeDisplay: '7:00 PM',
     endTimeDisplay: '8:30 PM',
     timeZone: ET,
+  },
+
+  PLC: {
+    title: 'PLC',
+    ...TRINITY,
+    startTimeDisplay: '6:15 PM',
+    endTimeDisplay: '8:30 PM',
   },
 };
 
@@ -103,9 +117,7 @@ const allEvents = [
   },
   {
     date: '2025-11-13',
-    ...COMMON.REGULAR_MEETING,
-    title: 'PLC',
-    startTimeDisplay: '6:15 PM',
+    ...COMMON.PLC,
   },
   {
     date: '2025-11-13',
@@ -121,6 +133,99 @@ const allEvents = [
       'Participate in Gettysburg Luminaries and visit battlefield/hike Johnny Reb trail',
     scoutDressCode: CLASS_A,
   },
+  {
+    date: '2025-11-20',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2025-12-04',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2025-12-06',
+    ...TRINITY,
+    title: 'Breakfast with Santa',
+    startTimeDisplay: '8:00 AM',
+    endTimeDisplay: '11:30 AM',
+  },
+  {
+    date: '2025-12-11',
+    ...COMMON.PLC,
+  },
+  {
+    date: '2025-12-11',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2025-12-13',
+    title: 'Jingle Bell Beaver Day',
+    ...BROAD_CREEK,
+    startTimeDisplay: '8:30 AM',
+    endTimeDisplay: '3:30 PM',
+    scoutDressCode: CLASS_B,
+    description:
+      'Conservation service hours working at Broad Creek - ' +
+      'a good OA event for all if you don’t want to do Wreaths Across America.',
+  },
+  {
+    date: '2025-12-13',
+    title: 'Wreaths Across America',
+    startTimeDisplay: '10:00 AM',
+    endTimeDisplay: '2:00 PM',
+    timeZone: ET,
+    scoutDressCode: CLASS_A,
+    description:
+      'Community Service by putting wreaths on the graves of veterans and participating in a flag ceremony.',
+  },
+  {
+    date: '2025-12-18',
+    ...TRINITY,
+    title: 'Holiday Party',
+    startTimeDisplay: '7:00 PM',
+    endTimeDisplay: '8:30 PM',
+  },
+  {
+    date: '2025-12-24',
+    title: 'Ari’s Eagle Court of Honor',
+    startTimeDisplay: '2:15 PM',
+    endTimeDisplay: '4:15 PM',
+    location: 'Beth Am Synagogue',
+    timeZone: ET,
+    scoutDressCode: CLASS_A,
+  },
+
+  {
+    date: '2026-01-08',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-01-15',
+    ...COMMON.PLC,
+  },
+  {
+    date: '2026-01-15',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-01-22',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-01-29',
+    ...COMMON.REGULAR_MEETING,
+  },
+  // {
+  //   date: '2025-02-05',
+  //   ...COMMON.REGULAR_MEETING,
+  // },
+  // {
+  //   date: '2026-02-12',
+  //   ...COMMON.PLC,
+  // },
+  // {
+  //   date: '2025-02-12',
+  //   ...COMMON.REGULAR_MEETING,
+  // },
   {
     date: '2026-07-30',
     endDate: '2026-08-07',
