@@ -1,6 +1,7 @@
-import breakfastSantaPicture from '../../assets/images/santa.jpg';
+// import breakfastSantaPicture from '../../assets/images/santa.jpg';
 import coffeePicture from '../../assets/images/coffee.png';
-import papaJohnsLogo from '../../assets/images/papa-johns-logo.jpg';
+// import papaJohnsLogo from '../../assets/images/papa-johns-logo.jpg';
+import raftingPicture from '../../assets/images/maine-rafting-picture.jpg';
 
 import './FeaturedEvents.css';
 import type {ReactNode} from 'react';
@@ -74,6 +75,8 @@ function FeaturedEventsSection() {
     <section className="featured-events">
       <h2>Featured Events</h2>
       <div className="events-list">
+        {/* Keeping these events in case they are used again - may put it in a better place later */}
+        {/* 
         <Event
           buttonText="Buy Tickets"
           description={
@@ -106,6 +109,26 @@ function FeaturedEventsSection() {
           image={papaJohnsLogo}
           imageAlt="Papa John's Logo"
           title="Papa John’s BOGO Fundraising Cards"
+        /> 
+        */}
+
+        <Event
+          buttonText="Learn More"
+          description={
+            <>
+              Maine High Adventure (MHA) is a Scouting America high adventure
+              program located in North Maine that offers wilderness treks, most
+              notably canoe trips on the Allagash Wilderness Waterway and 100km
+              treks through the North Woods. The program provides trained guides
+              and gear for these expeditions, focusing on authentic, remote
+              backcountry experiences with a strong emphasis on outdoor skills
+              and environmental interpretation.
+            </>
+          }
+          href="https://www.mainehighadventure.org/"
+          image={raftingPicture}
+          imageAlt="Rafting"
+          title="Troop 8634 Maine High Adventure Trip"
         />
         <Event
           {...{description, href}}

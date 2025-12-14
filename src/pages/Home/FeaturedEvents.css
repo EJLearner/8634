@@ -16,6 +16,17 @@
     row-gap: 3rem;
   }
 
+  /* allow larger minimums when there is only two items */
+  .events-list:not(:has(> div:nth-child(3))) {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+
+  /* allow larger minimums when there is only one item */
+  .events-list:not(:has(> div:nth-child(2))) {
+    justify-content: center;
+    grid-template-columns: minmax(500px, 1fr);
+  }
+
   .events-list > div {
     display: grid;
     grid-template-rows: subgrid;
