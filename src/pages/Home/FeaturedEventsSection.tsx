@@ -1,7 +1,7 @@
 // import breakfastSantaPicture from '../../assets/images/santa.jpg';
 import coffeePicture from '../../assets/images/coffee.png';
-// import papaJohnsLogo from '../../assets/images/papa-johns-logo.jpg';
 import raftingPicture from '../../assets/images/maine-rafting-picture.jpg';
+import bingoBall from '../../assets/images/bingo-ball.webp';
 
 import './FeaturedEvents.css';
 import type {ReactNode} from 'react';
@@ -76,25 +76,26 @@ function FeaturedEventsSection() {
       <h2>Featured Events</h2>
       <div className="events-list">
         {/* Keeping these events in case they are used again - may put it in a better place later */}
-        {/* 
+
         <Event
           buttonText="Buy Tickets"
           description={
             <p>
-              Start your holiday season with joy at our annual{' '}
-              <i>Breakfast with Santa</i>! Enjoy a delicious breakfast buffet,
-              festive holiday music, and cheerful decorations. Children can
-              share their wish lists, take photos with Santa, and enjoy fun
-              crafts and activities. It’s the perfect way to kick off the
-              holiday season with family and friends!
+              Join us on June 6th for an unforgettable, high-energy Boogie &
+              Bingo experience! This isn’t your typical bingo night—our live DJ
+              will have you singing, dancing, and jamming the night away as you
+              play multiple rounds of musical bingo featuring hits from across
+              the decades and genres. Whether you’re a music genius or just in
+              it for the fun, every round brings new surprises, laughs, and
+              chances to win!
             </p>
           }
-          href="https://www.zeffy.com/en-US/ticketing/troop-8634-breakfast-with-santa"
-          image={breakfastSantaPicture}
-          imageAlt="Santa Cookie"
-          title="Breakfast with Santa"
+          href="https://www.zeffy.com/en-US/ticketing/troop-8634s-beats-and-bingo"
+          image={bingoBall}
+          imageAlt="Disco Balls"
+          title="Boogie & Bingo"
         />
-        <Event
+        {/* <Event
           buttonText="Buy BOGO Card"
           description={
             <p>
@@ -109,8 +110,7 @@ function FeaturedEventsSection() {
           image={papaJohnsLogo}
           imageAlt="Papa John's Logo"
           title="Papa John’s BOGO Fundraising Cards"
-        /> 
-        */}
+        /> */}
 
         <Event
           buttonText="Learn More"

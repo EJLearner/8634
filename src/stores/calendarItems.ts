@@ -30,6 +30,13 @@ const COMMON = {
     startTimeDisplay: '6:15 PM',
     endTimeDisplay: '8:30 PM',
   },
+
+  COURT_OF_HONOR: {
+    title: 'Court of Honor',
+    ...TRINITY,
+    startTimeDisplay: '7:00 PM',
+    endTimeDisplay: '8:30 PM',
+  },
 };
 
 const CLASS_A = 'Class A/Field Uniform';
@@ -83,8 +90,7 @@ const allEvents = [
   },
   {
     date: '2025-11-06',
-    title: 'Court of Honor',
-    ...TRINITY,
+    ...COMMON.COURT_OF_HONOR,
   },
   {
     date: '2025-11-08',
@@ -120,10 +126,6 @@ const allEvents = [
     ...COMMON.PLC,
   },
   {
-    date: '2025-11-13',
-    ...COMMON.REGULAR_MEETING,
-  },
-  {
     date: '2025-11-14',
     title: 'Gettysburg Luminaries',
     startTimeDisplay: '6:00 PM',
@@ -132,14 +134,6 @@ const allEvents = [
     description:
       'Participate in Gettysburg Luminaries and visit battlefield/hike Johnny Reb trail',
     scoutDressCode: CLASS_A,
-  },
-  {
-    date: '2025-11-20',
-    ...COMMON.REGULAR_MEETING,
-  },
-  {
-    date: '2025-12-04',
-    ...COMMON.REGULAR_MEETING,
   },
   {
     date: '2025-12-06',
@@ -151,10 +145,6 @@ const allEvents = [
   {
     date: '2025-12-11',
     ...COMMON.PLC,
-  },
-  {
-    date: '2025-12-11',
-    ...COMMON.REGULAR_MEETING,
   },
   {
     date: '2025-12-13',
@@ -193,27 +183,6 @@ const allEvents = [
     timeZone: ET,
     scoutDressCode: CLASS_A,
   },
-
-  {
-    date: '2026-01-08',
-    ...COMMON.REGULAR_MEETING,
-  },
-  {
-    date: '2026-01-15',
-    ...COMMON.PLC,
-  },
-  {
-    date: '2026-01-15',
-    ...COMMON.REGULAR_MEETING,
-  },
-  {
-    date: '2026-01-22',
-    ...COMMON.REGULAR_MEETING,
-  },
-  {
-    date: '2026-01-29',
-    ...COMMON.REGULAR_MEETING,
-  },
   // {
   //   date: '2025-02-05',
   //   ...COMMON.REGULAR_MEETING,
@@ -233,6 +202,140 @@ const allEvents = [
     location: 'Maine',
     description:
       'An unforgettable experience in the woods and waters of Maine followed by whale watching in Portland!',
+  },
+  {
+    ...TRINITY,
+    date: '2026-06-06',
+    title: 'Boogie & Bingo',
+    startTimeDisplay: '7:00 PM',
+    endTimeDisplay: '11:00 PM',
+    description:
+      'Join us on June 6th for an unforgettable, high-energy Boogie & Bingo experience! ' +
+      'This isn’t your typical bingo night—our live DJ will have you singing, dancing, ' +
+      'and jamming the night away as you play multiple rounds of musical bingo featuring hits ' +
+      'from across the decades and genres. Whether you’re a music genius or just in it for the fun, ' +
+      'every round brings new surprises, laughs, and chances to win!',
+  },
+  {
+    date: '2026-05-07',
+    ...COMMON.COURT_OF_HONOR,
+  },
+  {
+    date: '2026-04-26',
+    title: "Halle's Eagle Project/skills",
+  },
+  {
+    date: '2026-04-30',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-05-01',
+    endDate: '2026-05-03',
+    title: 'NYLT - 2026-1 Weekend 2',
+  },
+  {
+    date: '2026-05-07',
+    ...COMMON.PLC,
+  },
+  {
+    date: '2026-05-09',
+    title: 'Canoeing at Piney Run',
+  },
+  {
+    date: '2026-05-14',
+    title: 'Troop Committee Meeting',
+  },
+  {
+    date: '2026-05-14',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-05-15',
+    endDate: '2026-05-17',
+    title: 'Canoe Trip',
+  },
+  {
+    date: '2026-05-16',
+    title: 'Hampstead Day',
+  },
+  {
+    date: '2026-05-16',
+    title: 'Conservation Service Day',
+  },
+  {
+    date: '2026-05-21',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-05-23',
+    title: 'We Remember',
+  },
+  {
+    date: '2026-05-25',
+    title: 'Memorial Day Service at Reisterstown Cemetary',
+  },
+  {
+    date: '2026-05-28',
+    title: 'Troop Committee Meeting',
+  },
+  {
+    date: '2026-05-28',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-05-29',
+    endDate: '2026-05-31',
+    title: 'Bike Camping',
+  },
+  {
+    date: '2026-06-04',
+    ...COMMON.PLC,
+  },
+  {
+    date: '2026-06-04',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-06-11',
+    title: 'Troop Committee Meeting',
+  },
+  {
+    date: '2026-06-11',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-06-12',
+    endDate: '2026-06-14',
+    title: 'Fishing and White Water Rafting',
+  },
+  {
+    date: '2026-06-18',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-06-20',
+    title: 'Conservation Service Day',
+  },
+  {
+    date: '2026-06-25',
+    title: 'Troop Committee Meeting',
+  },
+  {
+    date: '2026-06-25',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-06-28',
+    endDate: '2026-07-04',
+    title: 'Summer Camp',
+  },
+  {
+    date: '2026-07-02',
+    ...COMMON.REGULAR_MEETING,
+  },
+  {
+    date: '2026-07-04',
+    title: 'Independence Day',
   },
 ];
 
